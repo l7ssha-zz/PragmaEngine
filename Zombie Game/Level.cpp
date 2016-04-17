@@ -1,5 +1,10 @@
 #include "Level.h"
 
+#include <PragmaEngine/BengineErrors.h>
+#include <fstream>
+#include <iostream>
+#include <PragmaEngine/ResourceManager.h>
+
 Level::Level(const std::string& fileName) {
 
     std::ifstream file;
@@ -48,21 +53,21 @@ Level::Level(const std::string& fileName) {
                 case 'R':
                     _spriteBatch.draw(destRect,
                                       uvRect,
-									  PragmaEngine::ResourceManager::getTexture("Textures/red_bricks.png").id,
+										PragmaEngine::ResourceManager::getTexture("Textures/red_bricks.png").id,
                                       0.0f,
                                       whiteColor);      
                     break;
                 case 'G':
                     _spriteBatch.draw(destRect,
                                       uvRect,
-                                      PragmaEngine::ResourceManager::getTexture("Textures/glass.png").id,
+										PragmaEngine::ResourceManager::getTexture("Textures/glass.png").id,
                                       0.0f,
                                       whiteColor);
                     break;
                 case 'L':
                     _spriteBatch.draw(destRect,
                                       uvRect,
-									  PragmaEngine::ResourceManager::getTexture("Textures/light_bricks.png").id,
+										PragmaEngine::ResourceManager::getTexture("Textures/light_bricks.png").id,
                                       0.0f,
                                       whiteColor);
                     break;

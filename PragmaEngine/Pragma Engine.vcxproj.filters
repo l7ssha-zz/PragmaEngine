@@ -31,6 +31,15 @@
     <Filter Include="Core\.cpp">
       <UniqueIdentifier>{14d06eda-560d-4ec6-a51d-fd758e9a97f9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Audio">
+      <UniqueIdentifier>{f30d7f05-9e3f-45f7-a6fc-c9ccd7d48ac3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Audio\.cpp">
+      <UniqueIdentifier>{cc129780-bef4-454c-a4f4-6519a3a10fab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Audio\.h">
+      <UniqueIdentifier>{a6ebf0fc-1165-4da0-85d0-1957d72109c0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -81,6 +90,12 @@
     <ClInclude Include="GLSLProgram.h">
       <Filter>Graphics\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AudioEngine.h">
+      <Filter>Audio\.h</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteFont.h">
+      <Filter>Graphics\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera2D.cpp">
@@ -124,6 +139,12 @@
     </ClCompile>
     <ClCompile Include="Timing.cpp">
       <Filter>Core\.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioEngine.cpp">
+      <Filter>Audio\.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteFont.cpp">
+      <Filter>Graphics\.cpp</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

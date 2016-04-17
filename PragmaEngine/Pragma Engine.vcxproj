@@ -72,14 +72,16 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)BUILD\$(ProjectName)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)BUILD\$(ProjectName)\$(Configuration)\IMMEDIATE</IntDir>
-    <IncludePath>F:\VisualStudioProjects\Pragma Engine\Dependencies\include;$(IncludePath)</IncludePath>
-    <LibraryPath>F:\VisualStudioProjects\Pragma Engine\Dependencies\libs\zlib;F:\VisualStudioProjects\Pragma Engine\Dependencies\libs\SDL;F:\VisualStudioProjects\Pragma Engine\Dependencies\libs\GL;$(LibraryPath)</LibraryPath>
+    <IncludePath>F:\VisualStudioProjects\PragmaEngine\Dependencies\include;$(IncludePath)</IncludePath>
+    <LibraryPath>F:\VisualStudioProjects\PragmaEngine\Dependencies\libs;$(LibraryPath)</LibraryPath>
+    <TargetName>pragmaengine</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)BUILD\$(ProjectName)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)BUILD\$(ProjectName)\$(Configuration)\IMMEDIATE</IntDir>
-    <IncludePath>F:\VisualStudioProjects\Pragma Engine\Dependencies\include;$(IncludePath)</IncludePath>
-    <LibraryPath>F:\VisualStudioProjects\Pragma Engine\Dependencies\libs\zlib;F:\VisualStudioProjects\Pragma Engine\Dependencies\libs\SDL;F:\VisualStudioProjects\Pragma Engine\Dependencies\libs\GL;$(LibraryPath)</LibraryPath>
+    <IncludePath>F:\VisualStudioProjects\PragmaEngine\Dependencies\include;$(IncludePath)</IncludePath>
+    <LibraryPath>F:\VisualStudioProjects\PragmaEngine\Dependencies\libs;$(LibraryPath)</LibraryPath>
+    <TargetName>pragmaengine</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -111,7 +113,7 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalDependencies>glew32.lib;opengl32.lib;SDL2main.lib;SDL2.lib;zdll.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glew32.lib;opengl32.lib;SDL2main.lib;SDL2.lib;zdll.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -128,6 +130,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AudioEngine.h" />
     <ClInclude Include="pg.h" />
     <ClInclude Include="Camera2D.h" />
     <ClInclude Include="Errors.h" />
@@ -140,12 +143,14 @@
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteBatch.h" />
+    <ClInclude Include="SpriteFont.h" />
     <ClInclude Include="TextureCache.h" />
     <ClInclude Include="Timing.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AudioEngine.cpp" />
     <ClCompile Include="pg.cpp" />
     <ClCompile Include="Camera2D.cpp" />
     <ClCompile Include="Errors.cpp" />
@@ -157,6 +162,7 @@
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteBatch.cpp" />
+    <ClCompile Include="SpriteFont.cpp" />
     <ClCompile Include="TextureCache.cpp" />
     <ClCompile Include="Timing.cpp" />
     <ClCompile Include="Window.cpp" />

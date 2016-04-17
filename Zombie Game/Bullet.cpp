@@ -1,4 +1,10 @@
 #include "Bullet.h"
+#include <PragmaEngine/ResourceManager.h>
+
+#include "Agent.h"
+#include "Human.h"
+#include "Zombie.h"
+#include "Level.h"
 
 Bullet::Bullet(glm::vec2 position, glm::vec2 direction, float damage, float speed) :
     _position(position),

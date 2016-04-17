@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Agent.h"
-#include "Human.h"
 
 class Zombie : public Agent
 {

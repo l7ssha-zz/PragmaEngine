@@ -1,9 +1,5 @@
 #pragma once
 
-#include <ctime>
-#include <random>
-#include <glm/gtx/rotate_vector.hpp>
-
 #include "Agent.h"
 
 class Human : public Agent
