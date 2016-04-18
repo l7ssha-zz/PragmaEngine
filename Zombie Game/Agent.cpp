@@ -1,4 +1,7 @@
 #include "Agent.h"
+#include <PragmaEngine/ResourceManager.h>
+#include "Level.h"
+#include <algorithm>
 
 Agent::Agent()
 {

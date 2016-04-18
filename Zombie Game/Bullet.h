@@ -2,14 +2,7 @@
 
 #include <glm/glm.hpp>
 #include <vector>
-
 #include <PragmaEngine/SpriteBatch.h>
-#include <PragmaEngine/ResourceManager.h>
-
-#include "Agent.h"
-#include "Human.h"
-#include "Zombie.h"
-#include "Level.h"
 
 class Human;
 class Zombie;

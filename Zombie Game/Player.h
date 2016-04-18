@@ -1,13 +1,9 @@
 #pragma once
 
+#include "Human.h"
 #include <PragmaEngine/InputManager.h>
 #include <PragmaEngine/Camera2D.h>
-
-#include <SDL/SDL.h>
-
-#include "Gun.h"
 #include "Bullet.h"
-#include "Human.h"
 
 class Gun;
 

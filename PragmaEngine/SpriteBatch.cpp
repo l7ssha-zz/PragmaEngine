@@ -1,10 +1,16 @@
 #include "SpriteBatch.h"
 
+#include <algorithm>
+
 namespace PragmaEngine {
 
-SpriteBatch::SpriteBatch() : _vbo(0), _vao(0) { }
+SpriteBatch::SpriteBatch() : _vbo(0), _vao(0)
+{
+}
 
-SpriteBatch::~SpriteBatch() { }
+SpriteBatch::~SpriteBatch()
+{
+}
 
 void SpriteBatch::init() {
     createVertexArray();

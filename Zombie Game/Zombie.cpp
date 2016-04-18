@@ -1,5 +1,7 @@
 #include "Zombie.h"
 
+#include "Human.h"
+
 Zombie::Zombie()
 {
 }

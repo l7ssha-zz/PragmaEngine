@@ -1,13 +1,7 @@
 #pragma once
 
-#include <algorithm>
 #include <glm/glm.hpp>
-
 #include <PragmaEngine/SpriteBatch.h>
-#include <PragmaEngine/ResourceManager.h>
-
-#include "Level.h"
-
 
 const float AGENT_WIDTH = 60.0f;
 const float AGENT_RADIUS = AGENT_WIDTH / 2.0f;
@@ -27,7 +21,9 @@ public:
                         float deltaTime) = 0;
 
     bool collideWithLevel(const std::vector<std::string>& levelData);
+
     bool collideWithAgent(Agent* agent);
+
     void draw(PragmaEngine::SpriteBatch& _spriteBatch);
     
     // Return true if we died
@@ -46,7 +42,6 @@ protected:
     
     glm::vec2 _position;
 	PragmaEngine::ColorRGBA8 _color;
-
     float _speed;
     float _health;
 };

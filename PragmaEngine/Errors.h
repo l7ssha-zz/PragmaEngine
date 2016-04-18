@@ -16,9 +16,8 @@ including commercial application
 #pragma once
 
 #include <cstdlib>
-
 #include <iostream>
-#include <SDL/SDL.h>
+#include <SDL\SDL.h>
 #include <string>
 
 //This file holds some global error functions

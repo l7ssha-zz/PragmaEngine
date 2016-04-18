@@ -5,18 +5,9 @@
 #include <PragmaEngine/Camera2D.h>
 #include <PragmaEngine/InputManager.h>
 #include <PragmaEngine/SpriteBatch.h>
-#include <PragmaEngine/pg.h>
-#include <PragmaEngine/Timing.h>
-#include <PragmaEngine/Errors.h>
+#include <PragmaEngine/SpriteFont.h>
+#include <PragmaEngine/AudioEngine.h>
 
-#include <random>
-#include <ctime>
-#include <algorithm>
-#include <SDL/SDL.h>
-#include <iostream>
-
-#include "Gun.h"
-#include "Zombie.h"
 #include "Player.h"
 #include "Level.h"
 #include "Bullet.h"
@@ -65,27 +56,43 @@ private:
     /// Renders the game
     void drawGame();
 
+    /// Draws the HUD
+    void drawHud();
+
     /// Member Variables
-	PragmaEngine::Window _window; ///< The game window
-	PragmaEngine::GLSLProgram _textureProgram; ///< The shader program
-	PragmaEngine::InputManager _inputManager; ///< Handles input
-	PragmaEngine::Camera2D _camera; ///< Main Camera
-	PragmaEngine::SpriteBatch _agentSpriteBatch; ///< Draws all agents
+	PragmaEngine::Window m_window; ///< The game window
+    
+	PragmaEngine::GLSLProgram m_textureProgram; ///< The shader program
 
-    std::vector<Level*> _levels; ///< vector of all levels
+	PragmaEngine::InputManager m_inputManager; ///< Handles input
 
-    int _screenWidth, _screenHeight;
-    float _fps;
-    int _currentLevel;
+	PragmaEngine::Camera2D m_camera; ///< Main Camera
+	PragmaEngine::Camera2D m_hudCamera; ///< Hud Camera
 
-    Player* _player;
-    std::vector<Human*> _humans; ///< Vector of all humans
-    std::vector<Zombie*> _zombies; ///< Vector of all zombies
-    std::vector<Bullet> _bullets;
+	PragmaEngine::SpriteBatch m_agentSpriteBatch; ///< Draws all agents
+	PragmaEngine::SpriteBatch m_hudSpriteBatch;
 
-    int _numHumansKilled; ///< Humans killed by player
-    int _numZombiesKilled; ///< Zombies killed by player
+    std::vector<Level*> m_levels; ///< vector of all levels
 
-    GameState _gameState;
+    int m_screenWidth = 1024;
+    int m_screenHeight = 768;
+
+    float m_fps;
+
+    int m_currentLevel;
+
+    Player* m_player;
+    std::vector<Human*> m_humans; ///< Vector of all humans
+    std::vector<Zombie*> m_zombies; ///< Vector of all zombies
+    std::vector<Bullet> m_bullets;
+
+    int m_numHumansKilled; ///< Humans killed by player
+    int m_numZombiesKilled; ///< Zombies killed by player
+
+	PragmaEngine::SpriteFont* m_spriteFont;
+
+	PragmaEngine::AudioEngine m_audioEngine;
+
+    GameState m_gameState;
 };
 

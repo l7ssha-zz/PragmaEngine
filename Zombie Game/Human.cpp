@@ -1,5 +1,9 @@
 #include "Human.h"
 
+#include <ctime>
+#include <random>
+#include <glm/gtx/rotate_vector.hpp>
+
 Human::Human() :
     _frames(0)
 {
@@ -43,7 +47,7 @@ void Human::update(const std::vector<std::string>& levelData,
     _position += _direction * _speed * deltaTime;
 
     // Randomly change direction every 20 frames
-    if (_frames == 20) {
+    if (_frames == 1200) {
         _direction = glm::rotate(_direction, randRotate(randomEngine));
         _frames = 0;
     } else {

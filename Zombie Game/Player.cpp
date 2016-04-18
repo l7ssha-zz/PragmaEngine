@@ -1,4 +1,7 @@
 #include "Player.h"
+#include <SDL/SDL.h>
+
+#include "Gun.h"
 
 Player::Player() :
     _currentGunIndex(-1) {
@@ -70,6 +73,8 @@ void Player::update(const std::vector<std::string>& levelData,
                                         direction,
                                         *_bullets,
                                         deltaTime);
+                                        
+
     }
 
     collideWithLevel(levelData);
