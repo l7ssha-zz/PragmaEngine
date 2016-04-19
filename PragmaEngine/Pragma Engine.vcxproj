@@ -131,6 +131,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AudioEngine.h" />
+    <ClInclude Include="ParticleBatch2D.h" />
+    <ClInclude Include="ParticleEngine2D.h" />
     <ClInclude Include="pg.h" />
     <ClInclude Include="Camera2D.h" />
     <ClInclude Include="Errors.h" />
@@ -151,6 +153,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AudioEngine.cpp" />
+    <ClCompile Include="ParticleBatch2D.cpp" />
+    <ClCompile Include="ParticleEngine2D.cpp" />
     <ClCompile Include="pg.cpp" />
     <ClCompile Include="Camera2D.cpp" />
     <ClCompile Include="Errors.cpp" />

@@ -1,18 +1,5 @@
 #include "MainGame.h"
 
-#include <PragmaEngine/pg.h>
-#include <PragmaEngine/Timing.h>
-#include <PragmaEngine/Errors.h>
-#include <random>
-#include <ctime>
-#include <algorithm>
-
-#include <SDL/SDL.h>
-#include <iostream>
-
-#include "Gun.h"
-#include "Zombie.h"
-
 const float HUMAN_SPEED = 1.0f;
 const float ZOMBIE_SPEED = 1.3f;
 const float PLAYER_SPEED = 5.0f;
@@ -82,6 +69,11 @@ void MainGame::initSystems() {
     m_camera.init(m_screenWidth, m_screenHeight);
     m_hudCamera.init(m_screenWidth, m_screenHeight);
     m_hudCamera.setPosition(glm::vec2(m_screenWidth / 2, m_screenHeight / 2));
+
+	// Initialize particles
+	m_bloodParticleBatch = new PragmaEngine::ParticleBatch2D;
+	m_bloodParticleBatch->init(1000, 0.05f, PragmaEngine::ResourceManager::getTexture("Textures/particle.png"));
+	m_particleEngine.addParticleBatch(m_bloodParticleBatch);
 
 }
 
@@ -176,6 +168,8 @@ void MainGame::gameLoop() {
             // Update all physics here and pass in deltaTime
             updateAgents(deltaTime);
             updateBullets(deltaTime);
+			//Update particle Engine
+			m_particleEngine.update(deltaTime);
             // Since we just took a step that is length deltaTime, subtract from totalDeltaTime
             totalDeltaTime -= deltaTime;
             // Increment our frame counter so we can limit steps to MAX_PHYSICS_STEPS
@@ -191,7 +185,7 @@ void MainGame::gameLoop() {
 
         // End the frame, limit the FPS, and get the current FPS.
         m_fps = fpsLimiter.end();
-        std::cout << m_fps << std::endl;
+        //std::cout << m_fps << std::endl;
     }
 }
 
@@ -269,7 +263,9 @@ void MainGame::updateBullets(float deltaTime) {
         for (int j = 0; j < m_zombies.size(); ) {
             // Check collision
             if (m_bullets[i].collideWithAgent(m_zombies[j])) {
-                // Damage zombie, and kill it if its out of health
+				//add blood
+				addBlood(m_bullets[i].getPosition(), 5);
+				// Damage zombie, and kill it if its out of health
                 if (m_zombies[j]->applyDamage(m_bullets[i].getDamage())) {
                     // If the zombie died, remove him
                     delete m_zombies[j];
@@ -296,7 +292,9 @@ void MainGame::updateBullets(float deltaTime) {
             for (int j = 1; j < m_humans.size(); ) {
                 // Check collision
                 if (m_bullets[i].collideWithAgent(m_humans[j])) {
-                    // Damage human, and kill it if its out of health
+					//add blood
+					addBlood(m_bullets[i].getPosition(), 5);
+					// Damage human, and kill it if its out of health
                     if (m_humans[j]->applyDamage(m_bullets[i].getDamage())) {
                         // If the human died, remove him
                         delete m_humans[j];
@@ -416,6 +414,10 @@ void MainGame::drawGame() {
     // Render to the screen
     m_agentSpriteBatch.renderBatch();
 
+	// Render the particles
+	m_particleEngine.draw(&m_agentSpriteBatch);
+
+
     // Render the heads up display
     drawHud();
 
@@ -442,7 +444,28 @@ void MainGame::drawHud() {
     sprintf_s(buffer, "Num Zombies %d", m_zombies.size());
     m_spriteFont->draw(m_hudSpriteBatch, buffer, glm::vec2(0, 36),
                       glm::vec2(0.5), 0.0f, PragmaEngine::ColorRGBA8(255, 255, 255, 255));
+	/*
+	sprintf_s(buffer, "FPS: %d", round(m_fps));
+	m_spriteFont->draw(m_hudSpriteBatch, buffer, glm::vec2(0, 72),
+		glm::vec2(0.5), 0.0f, PragmaEngine::ColorRGBA8(255, 255, 255, 255));
+	*/
 
     m_hudSpriteBatch.end();
     m_hudSpriteBatch.renderBatch();
+}
+
+void MainGame::addBlood(const glm::vec2& position, int numParticles) {
+
+	static std::mt19937 randEngine(time(nullptr));
+	static std::mt19937 randEngine_2(time(nullptr));
+
+	static std::uniform_real_distribution<float> randAngle(0.0f, 360.0f);
+	static std::uniform_real_distribution<float> colorRand(120.0f, 255.0f);
+
+	glm::vec2 vel(2.0f, 0.0f);
+	PragmaEngine::ColorRGBA8 col(colorRand(randEngine_2), 0, 0, 255);
+
+	for (int i = 0; i < numParticles; i++) {
+		m_bloodParticleBatch->addParticle(position, glm::rotate(vel, randAngle(randEngine)), col, 30.0f);
+	}
 }

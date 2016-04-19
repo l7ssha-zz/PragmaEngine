@@ -5,6 +5,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test", "Test\Test.vcxproj", "{C5FEEA8A-4E35-469D-B918-50130B0983DD}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Zombie Game", "Zombie Game\Zombie Game.vcxproj", "{AED3DE00-561B-4E23-9278-06413A4BF633}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EC790B2D-EFF5-4F99-8E19-301D80F7E274} = {EC790B2D-EFF5-4F99-8E19-301D80F7E274}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PragmaEngine", "PragmaEngine\Pragma Engine.vcxproj", "{EC790B2D-EFF5-4F99-8E19-301D80F7E274}"
 EndProject

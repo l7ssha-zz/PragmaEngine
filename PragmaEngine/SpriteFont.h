@@ -1,22 +1,16 @@
-/* 
-    This is a modified version of the SpriteFont class from the
-    Seed Of Andromeda source code.
-    Use it for any of your projects, commercial or otherwise,
-    free of charge, but do not remove this disclaimer.
+/*
+------------------------- PragmaEngine BY L7SSHA | ALL RIGTS RESERVED -------------------------
+PragamEngine version 2.0
+Copyright (c) 2016 Szymon "l7ssha" Uglis
 
-    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS
-    ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL
-    IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO
-    EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-    INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER
-    RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-    ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION,
-    ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE
-    OF THIS SOFTWARE.
+This software is provided 'as-is', without any express or implied
+warranty. In no event will the authors be held liable for any damages
+arising from the use of this software.
 
-    November 28 2014
-    Original Author: Cristian Zaloj
-    Modified By: Benjamin Arnold
+Permission is granted to no one to use this software for any purpose,
+including commercial application
+
+------------------------- PragmaEngine BY L7SSHA | ALL RIGTS RESERVED -------------------------
 */
 
 #pragma once

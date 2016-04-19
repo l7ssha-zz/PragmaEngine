@@ -1,5 +1,13 @@
 #pragma once
 
+#include <glm\glm.hpp>
+#include <glm/gtx/rotate_vector.hpp>
+#include <random>
+#include <ctime>
+#include <algorithm>
+#include <SDL/SDL.h>
+#include <iostream>
+
 #include <PragmaEngine/Window.h>
 #include <PragmaEngine/GLSLProgram.h>
 #include <PragmaEngine/Camera2D.h>
@@ -7,7 +15,15 @@
 #include <PragmaEngine/SpriteBatch.h>
 #include <PragmaEngine/SpriteFont.h>
 #include <PragmaEngine/AudioEngine.h>
+#include <PragmaEngine\ParticleBatch2D.h>
+#include <PragmaEngine\ParticleEngine2D.h>
+#include <PragmaEngine\ResourceManager.h>
+#include <PragmaEngine/pg.h>
+#include <PragmaEngine/Timing.h>
+#include <PragmaEngine/Errors.h>
 
+#include "Gun.h"
+#include "Zombie.h"
 #include "Player.h"
 #include "Level.h"
 #include "Bullet.h"
@@ -58,6 +74,14 @@ private:
 
     /// Draws the HUD
     void drawHud();
+
+	/// Adds blood to the particle engine
+	void addBlood(const glm::vec2& position, int numParticles);
+	
+	
+	PragmaEngine::ParticleEngine2D m_particleEngine;
+	PragmaEngine::ParticleBatch2D* m_bloodParticleBatch;
+
 
     /// Member Variables
 	PragmaEngine::Window m_window; ///< The game window
