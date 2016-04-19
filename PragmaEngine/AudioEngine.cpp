@@ -50,12 +50,22 @@ namespace PragmaEngine {
         m_isInitialized = true;
     }
 
-    void AudioEngine::destroy() {
-        if (m_isInitialized) {
-            m_isInitialized = false;
-            Mix_Quit();
-        }
-    }
+	void AudioEngine::destroy() {
+		if (m_isInitialized) {
+			m_isInitialized = false;
+
+			for (auto& it : m_effectMap)
+				Mix_FreeChunk(it.second);
+			for (auto& it : m_musicMap)
+				Mix_FreeMusic(it.second);
+
+			m_effectMap.clear();
+			m_musicMap.clear();
+
+			Mix_Quit();
+			Mix_CloseAudio();
+		}
+	}
 
     SoundEffect AudioEngine::loadSoundEffect(const std::string& filePath) {
         // Try to find the audio in the cache
