@@ -96,6 +96,12 @@
     <ClInclude Include="SpriteFont.h">
       <Filter>Graphics\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ParticleBatch2D.h">
+      <Filter>Graphics\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleEngine2D.h">
+      <Filter>Graphics\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera2D.cpp">
@@ -144,6 +150,12 @@
       <Filter>Audio\.cpp</Filter>
     </ClCompile>
     <ClCompile Include="SpriteFont.cpp">
+      <Filter>Graphics\.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleBatch2D.cpp">
+      <Filter>Graphics\.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleEngine2D.cpp">
       <Filter>Graphics\.cpp</Filter>
     </ClCompile>
   </ItemGroup>
