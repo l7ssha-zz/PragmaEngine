@@ -19,7 +19,6 @@ including commercial application
 #include <glm/glm.hpp>
 
 namespace PragmaEngine {
-
 	// Input manager stores a key map that maps SDL_Keys to booleans.
 	// If the value in the key map is true, then the key is pressed.
 	// Otherwise, it is released.
@@ -52,5 +51,4 @@ namespace PragmaEngine {
 		std::unordered_map<unsigned int, bool> _previousKeyMap;
 		glm::vec2 _mouseCoords;
 	};
-
 }

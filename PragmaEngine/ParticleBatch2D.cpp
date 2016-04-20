@@ -1,11 +1,9 @@
 #include "ParticleBatch2D.h"
 
 namespace PragmaEngine {
-
 	ParticleBatch2D::ParticleBatch2D() {
 		// Empty
 	}
-
 
 	ParticleBatch2D::~ParticleBatch2D() {
 		delete[] m_particles;
@@ -61,7 +59,6 @@ namespace PragmaEngine {
 	}
 
 	int ParticleBatch2D::findFreeParticle() {
-
 		for (int i = m_lastFreeParticle; i < m_maxParticles; i++) {
 			if (m_particles[i].life <= 0.0f) {
 				m_lastFreeParticle = i;
@@ -79,5 +76,4 @@ namespace PragmaEngine {
 		// No particles are free, overwrite first particle
 		return 0;
 	}
-
 }

@@ -1,11 +1,9 @@
 #include "InputManager.h"
 
 namespace PragmaEngine {
-
 	InputManager::InputManager() : _mouseCoords(0.0f)
 	{
 	}
-
 
 	InputManager::~InputManager()
 	{
@@ -41,7 +39,8 @@ namespace PragmaEngine {
 		if (it != _keyMap.end()) {
 			// Found the key
 			return it->second;
-		} else {
+		}
+		else {
 			// Didn't find the key
 			return false;
 		}
@@ -63,10 +62,10 @@ namespace PragmaEngine {
 		if (it != _previousKeyMap.end()) {
 			// Found the key
 			return it->second;
-		} else {
+		}
+		else {
 			// Didn't find the key
 			return false;
 		}
 	}
-
 }

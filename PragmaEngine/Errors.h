@@ -22,7 +22,5 @@ including commercial application
 
 //This file holds some global error functions
 namespace PragmaEngine {
-
-    extern void fatalError(std::string errorString);
-
+	extern void fatalError(std::string errorString);
 }

@@ -22,18 +22,16 @@ including commercial application
 #include "ImageLoader.h"
 
 namespace PragmaEngine {
+	//This caches the textures so that multiple sprites can use the same textures
+	class TextureCache
+	{
+	public:
+		TextureCache();
+		~TextureCache();
 
-    //This caches the textures so that multiple sprites can use the same textures
-    class TextureCache
-    {
-    public:
-        TextureCache();
-        ~TextureCache();
+		GLTexture getTexture(std::string texturePath);
 
-        GLTexture getTexture(std::string texturePath);
-
-    private:
-        std::map<std::string, GLTexture> _textureMap;
-    };
-
+	private:
+		std::map<std::string, GLTexture> _textureMap;
+	};
 }

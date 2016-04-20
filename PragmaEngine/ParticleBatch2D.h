@@ -23,7 +23,6 @@ including commercial application
 #include "GLTexture.h"
 
 namespace PragmaEngine {
-
 	class Particle2D {
 	public:
 		glm::vec2 position = glm::vec2(0.0f);
@@ -67,5 +66,4 @@ namespace PragmaEngine {
 		int m_lastFreeParticle = 0;
 		GLTexture m_texture;
 	};
-
 }

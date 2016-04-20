@@ -20,30 +20,30 @@
 
 #include "Bullet.h"
 
-enum class GameState {PLAY, EXIT};
+enum class GameState { PLAY, EXIT };
 
 //Our example game class, just for testing purposes right now
 class MainGame
 {
 public:
-    MainGame();
-    ~MainGame();
+	MainGame();
+	~MainGame();
 
-    void run();
+	void run();
 
 private:
-    void initSystems();
-    void initShaders();
-    void gameLoop();
-    void processInput();
-    void drawGame();
+	void initSystems();
+	void initShaders();
+	void gameLoop();
+	void processInput();
+	void drawGame();
 
 	PragmaEngine::Window _window;
-    int _screenWidth;
-    int _screenHeight;
-    GameState _gameState;
+	int _screenWidth;
+	int _screenHeight;
+	GameState _gameState;
 
-    PragmaEngine::GLSLProgram _colorProgram;
+	PragmaEngine::GLSLProgram _colorProgram;
 	PragmaEngine::Camera2D _camera;
 
 	PragmaEngine::SpriteBatch _spriteBatch;
@@ -51,10 +51,9 @@ private:
 	PragmaEngine::InputManager _inputManager;
 	PragmaEngine::FpsLimiter _fpsLimiter;
 
-    std::vector<Bullet> _bullets;
-    
-    float _maxFPS;
-    float _fps;
-    float _time;
-};
+	std::vector<Bullet> _bullets;
 
+	float _maxFPS;
+	float _fps;
+	float _time;
+};

@@ -23,7 +23,6 @@ including commercial application
 #include "Vertex.h"
 
 namespace PragmaEngine {
-
 	// Determines how we should sort the glyphs
 	enum class GlyphSortType {
 		NONE,
@@ -112,5 +111,4 @@ namespace PragmaEngine {
 		std::vector<Glyph> _glyphs; ///< These are the actual glyphs
 		std::vector<RenderBatch> _renderBatches;
 	};
-
 }
