@@ -22,24 +22,22 @@ including commercial application
 #include "Errors.h"
 
 namespace PragmaEngine {
+	enum WindowFlags { INVISIBLE = 0x1, FULLSCREEN = 0x2, BORDERLESS = 0x4 };
 
-    enum WindowFlags { INVISIBLE = 0x1, FULLSCREEN = 0x2, BORDERLESS = 0x4 };
+	class Window
+	{
+	public:
+		Window();
+		~Window();
 
-    class Window
-    {
-    public:
-        Window();
-        ~Window();
+		int create(std::string windowName, int screenWidth, int screenHeight, unsigned int currentFlags);
 
-        int create(std::string windowName, int screenWidth, int screenHeight, unsigned int currentFlags);
+		void swapBuffer();
 
-        void swapBuffer();
-
-        int getScreenWidth() { _screenWidth; }
-        int getScreenHeight() { _screenHeight; }
-    private:
-        SDL_Window* _sdlWindow;
-        int _screenWidth, _screenHeight;
-    };
-
+		int getScreenWidth() { _screenWidth; }
+		int getScreenHeight() { _screenHeight; }
+	private:
+		SDL_Window* _sdlWindow;
+		int _screenWidth, _screenHeight;
+	};
 }

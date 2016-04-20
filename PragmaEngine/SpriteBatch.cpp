@@ -1,12 +1,9 @@
 #include "SpriteBatch.h"
 
 namespace PragmaEngine {
-
-
 	Glyph::Glyph(const glm::vec4& destRect, const glm::vec4& uvRect, GLuint Texture, float Depth, const ColorRGBA8& color) :
 		texture(Texture),
 		depth(Depth) {
-
 		topLeft.color = color;
 		topLeft.setPosition(destRect.x, destRect.y + destRect.w);
 		topLeft.setUV(uvRect.x, uvRect.y + uvRect.w);
@@ -27,7 +24,6 @@ namespace PragmaEngine {
 	Glyph::Glyph(const glm::vec4& destRect, const glm::vec4& uvRect, GLuint Texture, float Depth, const ColorRGBA8& color, float angle) :
 		texture(Texture),
 		depth(Depth) {
-
 		glm::vec2 halfDims(destRect.z / 2.0f, destRect.w / 2.0f);
 
 		// Get points centered at origin
@@ -115,8 +111,7 @@ namespace PragmaEngine {
 	}
 
 	void SpriteBatch::renderBatch() {
-
-		// Bind our VAO. This sets up the opengl state we need, including the 
+		// Bind our VAO. This sets up the opengl state we need, including the
 		// vertex attribute pointers and it binds the VBO
 		glBindVertexArray(_vao);
 
@@ -155,7 +150,6 @@ namespace PragmaEngine {
 
 		//Add all the rest of the glyphs
 		for (int cg = 1; cg < _glyphPointers.size(); cg++) {
-
 			// Check if this glyph can be part of the current batch
 			if (_glyphPointers[cg]->texture != _glyphPointers[cg - 1]->texture) {
 				// Make a new batch
@@ -183,11 +177,9 @@ namespace PragmaEngine {
 
 		// Unbind the VBO
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
-
 	}
 
 	void SpriteBatch::createVertexArray() {
-
 		// Generate the VAO if it isn't already generated
 		if (_vao == 0) {
 			glGenVertexArrays(1, &_vao);
@@ -215,11 +207,9 @@ namespace PragmaEngine {
 		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, uv));
 
 		glBindVertexArray(0);
-
 	}
 
 	void SpriteBatch::sortGlyphs() {
-
 		switch (_sortType) {
 		case GlyphSortType::BACK_TO_FRONT:
 			std::stable_sort(_glyphPointers.begin(), _glyphPointers.end(), compareBackToFront);
@@ -244,5 +234,4 @@ namespace PragmaEngine {
 	bool SpriteBatch::compareTexture(Glyph* a, Glyph* b) {
 		return (a->texture < b->texture);
 	}
-
 }

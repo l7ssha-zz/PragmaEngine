@@ -20,7 +20,6 @@ including commercial application
 #include <string>
 
 namespace PragmaEngine {
-
 	//This is a way for us to access all our resources, such as
 	//Models or textures.
 	class ResourceManager
@@ -31,5 +30,4 @@ namespace PragmaEngine {
 	private:
 		static TextureCache _textureCache;
 	};
-
 }

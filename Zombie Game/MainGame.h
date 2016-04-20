@@ -31,61 +31,59 @@
 class Zombie;
 
 enum class GameState {
-    PLAY,
-    EXIT
+	PLAY,
+	EXIT
 };
 
 class MainGame
 {
 public:
-    MainGame();
-    ~MainGame();
+	MainGame();
+	~MainGame();
 
-    /// Runs the game
-    void run();
+	/// Runs the game
+	void run();
 
 private:
-    /// Initializes the core systems
-    void initSystems();
+	/// Initializes the core systems
+	void initSystems();
 
-    /// Initializes the level and sets up everything
-    void initLevel();
+	/// Initializes the level and sets up everything
+	void initLevel();
 
-    /// Initializes the shaders
-    void initShaders();
+	/// Initializes the shaders
+	void initShaders();
 
-    /// Main game loop for the program
-    void gameLoop();
+	/// Main game loop for the program
+	void gameLoop();
 
-    /// Updates all agents
-    void updateAgents(float deltaTime);
+	/// Updates all agents
+	void updateAgents(float deltaTime);
 
-    /// Updates all bullets
-    void updateBullets(float deltaTim);
+	/// Updates all bullets
+	void updateBullets(float deltaTim);
 
-    /// Checks the victory condition
-    void checkVictory();
+	/// Checks the victory condition
+	void checkVictory();
 
-    /// Handles input processing
-    void processInput();
+	/// Handles input processing
+	void processInput();
 
-    /// Renders the game
-    void drawGame();
+	/// Renders the game
+	void drawGame();
 
-    /// Draws the HUD
-    void drawHud();
+	/// Draws the HUD
+	void drawHud();
 
 	/// Adds blood to the particle engine
 	void addBlood(const glm::vec2& position, int numParticles);
-	
-	
+
 	PragmaEngine::ParticleEngine2D m_particleEngine;
 	PragmaEngine::ParticleBatch2D* m_bloodParticleBatch;
 
-
-    /// Member Variables
+	/// Member Variables
 	PragmaEngine::Window m_window; ///< The game window
-    
+
 	PragmaEngine::GLSLProgram m_textureProgram; ///< The shader program
 
 	PragmaEngine::InputManager m_inputManager; ///< Handles input
@@ -96,27 +94,26 @@ private:
 	PragmaEngine::SpriteBatch m_agentSpriteBatch; ///< Draws all agents
 	PragmaEngine::SpriteBatch m_hudSpriteBatch;
 
-    std::vector<Level*> m_levels; ///< vector of all levels
+	std::vector<Level*> m_levels; ///< vector of all levels
 
-    int m_screenWidth = 1024;
-    int m_screenHeight = 768;
+	int m_screenWidth = 1024;
+	int m_screenHeight = 768;
 
-    float m_fps;
+	float m_fps;
 
-    int m_currentLevel;
+	int m_currentLevel;
 
-    Player* m_player;
-    std::vector<Human*> m_humans; ///< Vector of all humans
-    std::vector<Zombie*> m_zombies; ///< Vector of all zombies
-    std::vector<Bullet> m_bullets;
+	Player* m_player;
+	std::vector<Human*> m_humans; ///< Vector of all humans
+	std::vector<Zombie*> m_zombies; ///< Vector of all zombies
+	std::vector<Bullet> m_bullets;
 
-    int m_numHumansKilled; ///< Humans killed by player
-    int m_numZombiesKilled; ///< Zombies killed by player
+	int m_numHumansKilled; ///< Humans killed by player
+	int m_numZombiesKilled; ///< Zombies killed by player
 
 	PragmaEngine::SpriteFont* m_spriteFont;
 
 	PragmaEngine::AudioEngine m_audioEngine;
 
-    GameState m_gameState;
+	GameState m_gameState;
 };
-

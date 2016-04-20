@@ -18,5 +18,5 @@ including commercial application
 #include <GL/glew.h>
 
 namespace PragmaEngine {
-    extern int init();
+	extern int init();
 }
