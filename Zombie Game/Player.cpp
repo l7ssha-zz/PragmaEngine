@@ -1,5 +1,6 @@
 #include "Player.h"
 #include <SDL/SDL.h>
+#include <PragmaEngine/ResourceManager.h>
 
 #include "Gun.h"
 
@@ -18,11 +19,12 @@ void Player::init(float speed, glm::vec2 pos, PragmaEngine::InputManager* inputM
     _inputManager = inputManager;
     _bullets = bullets;
     _camera = camera;
-    _color.r = 0;
-    _color.g = 0;
-    _color.b = 185;
+    _color.r = 255;
+    _color.g = 255;
+    _color.b = 255;
     _color.a = 255;
     _health = 150;
+    m_textureID = PragmaEngine::ResourceManager::getTexture("Textures/player.png").id;
 }
 
 void Player::addGun(Gun* gun) {
@@ -59,18 +61,19 @@ void Player::update(const std::vector<std::string>& levelData,
         _currentGunIndex = 2;
     }
 
+    glm::vec2 mouseCoords = _inputManager->getMouseCoords();
+    mouseCoords = _camera->convertScreenToWorld(mouseCoords);
+
+
+    glm::vec2 centerPosition = _position + glm::vec2(AGENT_RADIUS);
+
+    m_direction = glm::normalize(mouseCoords - centerPosition);
+
     if (_currentGunIndex != -1) {
-
-        glm::vec2 mouseCoords = _inputManager->getMouseCoords();
-        mouseCoords = _camera->convertScreenToWorld(mouseCoords);
-
-        glm::vec2 centerPosition = _position + glm::vec2(AGENT_RADIUS);
-
-        glm::vec2 direction = glm::normalize(mouseCoords - centerPosition);
 
         _guns[_currentGunIndex]->update(_inputManager->isKeyDown(SDL_BUTTON_LEFT),
                                         centerPosition,
-                                        direction,
+                                        m_direction,
                                         *_bullets,
                                         deltaTime);
                                         

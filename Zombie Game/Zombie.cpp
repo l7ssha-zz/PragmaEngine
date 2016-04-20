@@ -1,4 +1,5 @@
 #include "Zombie.h"
+#include <PragmaEngine/ResourceManager.h>
 
 #include "Human.h"
 
@@ -13,9 +14,10 @@ Zombie::~Zombie()
 void Zombie::init(float speed, glm::vec2 pos) {
     _speed = speed;
     _position = pos;
-    _health = 150;
+    _health = 50;
     // Set Green Color
-    _color = PragmaEngine::ColorRGBA8(0, 160, 0, 255);
+    _color = PragmaEngine::ColorRGBA8(255, 255, 255, 255);
+    m_textureID = PragmaEngine::ResourceManager::getTexture("Textures/zombie.png").id;
 }
 
 void Zombie::update(const std::vector<std::string>& levelData,
@@ -29,8 +31,8 @@ void Zombie::update(const std::vector<std::string>& levelData,
     // If we found a human, move towards him
     if (closestHuman != nullptr) {
         // Get the direction vector twoards the player
-        glm::vec2 direction = glm::normalize(closestHuman->getPosition() - _position);
-        _position += direction * _speed * deltaTime;
+        m_direction = glm::normalize(closestHuman->getPosition() - _position);
+        _position += m_direction * _speed * deltaTime;
     }
 
     // Do collision

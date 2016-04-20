@@ -1,7 +1,12 @@
 #pragma once
+
 #include <string>
 #include <vector>
 #include <glm/glm.hpp>
+#include <random>
+#include <ctime>
+#include <glm/gtx/rotate_vector.hpp>
+
 #include <PragmaEngine/AudioEngine.h>
 
 #include "Bullet.h"

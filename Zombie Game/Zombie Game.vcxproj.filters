@@ -78,4 +78,7 @@
       <Filter>Core\Guns</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Levels\level1.txt" />
+  </ItemGroup>
 </Project>
