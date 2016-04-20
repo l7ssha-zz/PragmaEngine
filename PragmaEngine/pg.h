@@ -12,6 +12,7 @@ including commercial application
 
 ------------------------- PragmaEngine BY L7SSHA | ALL RIGTS RESERVED -------------------------
 */
+#pragma once
 
 #include <SDL/SDL.h>
 #include <GL/glew.h>
