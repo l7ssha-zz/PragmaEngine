@@ -34,9 +34,11 @@ void MainGame::run() {
 
 	initLevel();
 
-	PragmaEngine::Music music = m_audioEngine.loadMusic("Sound/ghosts.ogg");
+	//PragmaEngine::Music music = m_audioEngine.loadMusic("Sound/ghosts.ogg");
 
-	music.play(-1);
+	//music.play(-1);
+
+	m_audioengine.playMusic("Sound/ghosts.ogg", 0.5f);
 
 	gameLoop();
 }
@@ -44,9 +46,6 @@ void MainGame::run() {
 void MainGame::initSystems() {
 	// Initialize the game engine
 	PragmaEngine::init();
-
-	// Initialize sound, must happen after Bengine::init
-	m_audioEngine.init();
 
 	// Create our window
 	m_window.create("ZombieGame", m_screenWidth, m_screenHeight, 0);
@@ -112,11 +111,19 @@ void MainGame::initLevel() {
 		m_zombies.back()->init(ZOMBIE_SPEED, zombiePositions[i]);
 	}
 
+	/*
 	// Set up the players guns
 	const float BULLET_SPEED = 20.0f;
 	m_player->addGun(new Gun("Magnum", 15, 1, 0.05f, 50, BULLET_SPEED, m_audioEngine.loadSoundEffect("Sound/shots/pistol.wav")));
 	m_player->addGun(new Gun("Shotgun", 30, 12, 0.3f, 80, BULLET_SPEED, m_audioEngine.loadSoundEffect("Sound/shots/shotgun.wav")));
 	m_player->addGun(new Gun("MP5", 2, 1, 0.1f, 15, BULLET_SPEED, m_audioEngine.loadSoundEffect("Sound/shots/cg1.wav")));
+	*/
+
+	// Set up the players guns
+	const float BULLET_SPEED = 20.0f;
+	m_player->addGun(new Gun("Magnum", 15, 1, 0.05f, 50, BULLET_SPEED, "Sound/shots/pistol.wav"));
+	m_player->addGun(new Gun("Shotgun", 30, 12, 0.3f, 80, BULLET_SPEED, "Sound/shots/shotgun.wav"));
+	m_player->addGun(new Gun("MP5", 2, 1, 0.1f, 15, BULLET_SPEED, "Sound/shots/cg1.wav"));
 }
 
 void MainGame::initShaders() {
@@ -367,6 +374,20 @@ void MainGame::processInput() {
 			m_inputManager.releaseKey(evnt.button.button);
 			break;
 		}
+	}
+
+	bool stopped = false;
+
+	if (m_inputManager.isKeyDown(SDLK_z)) {
+		m_audioengine.stopMusic();
+		stopped = true;
+	}
+
+	if (!stopped) {
+		if (m_inputManager.isKeyDown(SDLK_x))
+			m_audioengine.pauseMusic();
+		if (m_inputManager.isKeyDown(SDLK_c))
+			m_audioengine.resumeMusic();
 	}
 }
 

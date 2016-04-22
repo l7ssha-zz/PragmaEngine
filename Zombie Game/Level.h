@@ -5,7 +5,7 @@
 #include <fstream>
 #include <iostream>
 
-#include <PragmaEngine/BengineErrors.h>
+#include <PragmaEngine/Errors.h>
 #include <PragmaEngine/ResourceManager.h>
 #include <PragmaEngine/SpriteBatch.h>
 
