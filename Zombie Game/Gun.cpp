@@ -1,14 +1,14 @@
 #include "Gun.h"
 
 Gun::Gun(std::string name, int fireRate, int bulletsPerShot,
-	float spread, float bulletDamage, float bulletSpeed, PragmaEngine::SoundEffect fireEffect) :
+	float spread, float bulletDamage, float bulletSpeed, std::string fireEffect) :
 	_name(name),
 	_fireRate(fireRate),
 	_bulletsPerShot(bulletsPerShot),
 	_spread(spread),
 	_bulletDamage(bulletDamage),
 	_bulletSpeed(bulletSpeed),
-	_frameCounter(0),
+	_frameCounter(0.0f),
 	m_fireEffect(fireEffect) {
 	// Empty
 }
@@ -27,11 +27,11 @@ void Gun::update(bool isMouseDown, const glm::vec2& position, const glm::vec2& d
 }
 
 void Gun::fire(const glm::vec2& direction, const glm::vec2& position, std::vector<Bullet>& bullets) {
-	static std::mt19937 randomEngine(time(nullptr));
+	static std::mt19937 randomEngine((unsigned int)(time(nullptr)));
 	// For offsetting the accuracy
 	std::uniform_real_distribution<float> randRotate(-_spread, _spread);
 
-	m_fireEffect.play();
+	audioplayer.playSound(m_fireEffect.c_str(), 0.1f);
 
 	for (int i = 0; i < _bulletsPerShot; i++) {
 		// Add a new bullet

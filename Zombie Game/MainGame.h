@@ -14,13 +14,13 @@
 #include <PragmaEngine/InputManager.h>
 #include <PragmaEngine/SpriteBatch.h>
 #include <PragmaEngine/SpriteFont.h>
-#include <PragmaEngine/AudioEngine.h>
 #include <PragmaEngine\ParticleBatch2D.h>
 #include <PragmaEngine\ParticleEngine2D.h>
 #include <PragmaEngine\ResourceManager.h>
 #include <PragmaEngine/pg.h>
 #include <PragmaEngine/Timing.h>
 #include <PragmaEngine/Errors.h>
+#include <PragmaEngine\AudioEngine.h>
 
 #include "Gun.h"
 #include "Zombie.h"
@@ -113,7 +113,7 @@ private:
 
 	PragmaEngine::SpriteFont* m_spriteFont;
 
-	PragmaEngine::AudioEngine m_audioEngine;
+	PragmaEngine::AudioEngine m_audioengine;
 
 	GameState m_gameState;
 };
