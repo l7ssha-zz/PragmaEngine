@@ -124,6 +124,7 @@
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="BallController.cpp" />
     <ClCompile Include="BallRenderer.cpp" />
+    <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainGame.cpp" />
   </ItemGroup>
@@ -131,6 +132,7 @@
     <ClInclude Include="Ball.h" />
     <ClInclude Include="BallController.h" />
     <ClInclude Include="BallRenderer.h" />
+    <ClInclude Include="Grid.h" />
     <ClInclude Include="MainGame.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
