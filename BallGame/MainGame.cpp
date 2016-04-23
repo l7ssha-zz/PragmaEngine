@@ -3,7 +3,6 @@
 
 #include <PragmaEngine/pg.h>
 #include <PragmaEngine/ResourceManager.h>
-
 #include <SDL/SDL.h>
 #include <random>
 #include <ctime>
@@ -16,6 +15,13 @@ const int MAX_PHYSICS_STEPS = 6; // Max number of physics steps per frame
 const float MS_PER_SECOND = 1000; // Number of milliseconds in a second
 const float DESIRED_FRAMETIME = MS_PER_SECOND / DESIRED_FPS; // The desired frame time per frame
 const float MAX_DELTA_TIME = 1.0f; // Maximum size of deltaTime
+
+MainGame::~MainGame() {
+	// Empty
+	for (int i = 0; i < m_ballRenderers.size(); i++) {
+		delete m_ballRenderers[i];
+	}
+}
 
 void MainGame::run() {
 	init();
@@ -60,8 +66,8 @@ void MainGame::run() {
 void MainGame::init() {
 	PragmaEngine::init();
 
-	m_screenWidth = 800;
-	m_screenHeight = 600;
+	m_screenWidth = 1024;
+	m_screenHeight = 720;
 
 	m_window.create("Ball Game", m_screenWidth, m_screenHeight, 0);
 	glClearColor(0.0, 0.0, 0.0, 1.0);
@@ -80,7 +86,16 @@ void MainGame::init() {
 	m_textureProgram.addAttribute("vertexUV");
 	m_textureProgram.linkShaders();
 
-	m_fpsLimiter.setMaxFPS(400.0f);
+	m_fpsLimiter.setMaxFPS(120.0f);
+
+	initRenderers();
+}
+
+void MainGame::initRenderers() {
+	m_ballRenderers.push_back(new BallRenderer);
+	m_ballRenderers.push_back(new MomentumBallRenderer);
+	m_ballRenderers.push_back(new VelocityBallRenderer(m_screenWidth, m_screenHeight));
+	m_ballRenderers.push_back(new TrippyBallRenderer(m_screenWidth, m_screenHeight));
 }
 
 struct BallSpawn {
@@ -102,12 +117,15 @@ struct BallSpawn {
 };
 #include <iostream>
 void MainGame::initBalls() {
+	// Initialize the grid
+	m_grid = std::make_unique<Grid>(m_screenWidth, m_screenHeight, CELL_SIZE);
+
 #define ADD_BALL(p, ...) \
     totalProbability += p; \
     possibleBalls.emplace_back(__VA_ARGS__);
 
 	// Number of balls to spawn
-	const int NUM_BALLS = 100;
+	const int NUM_BALLS = 5000;
 
 	// Random engine stuff
 	std::mt19937 randomEngine((unsigned int)time(nullptr));
@@ -119,16 +137,31 @@ void MainGame::initBalls() {
 	std::vector <BallSpawn> possibleBalls;
 	float totalProbability = 0.0f;
 
-	// Adds the balls using a macro
-	ADD_BALL(20.0f, PragmaEngine::ColorRGBA8(255, 255, 255, 255),
-		20.0f, 1.0f, 0.1f, 7.0f, totalProbability);
-	ADD_BALL(10.0f, PragmaEngine::ColorRGBA8(0, 0, 255, 255),
-		30.0f, 2.0f, 0.1f, 3.0f, totalProbability);
-	ADD_BALL(1.0f, PragmaEngine::ColorRGBA8(255, 0, 0, 255),
-		50.0f, 4.0f, 0.0f, 0.0f, totalProbability)
+	/// Random values for ball types
+	std::uniform_real_distribution<float> r1(2.0f, 6.0f);
+	std::uniform_int_distribution<int> r2(0, 255);
 
-		// Random probability for ball spawn
-		std::uniform_real_distribution<float> spawn(0.0f, totalProbability);
+	// Adds the balls using a macro
+	ADD_BALL(0.5f, PragmaEngine::ColorRGBA8(255, 255, 255, 255),
+		2.0f, 1.0f, 0.1f, 7.0f, totalProbability);
+	ADD_BALL(0.5f, PragmaEngine::ColorRGBA8(1, 254, 145, 255),
+		2.0f, 2.0f, 0.1f, 3.0f, totalProbability);
+	ADD_BALL(0.5f, PragmaEngine::ColorRGBA8(177, 0, 254, 255),
+		3.0f, 4.0f, 0.0f, 0.0f, totalProbability)
+		ADD_BALL(0.5f, PragmaEngine::ColorRGBA8(254, 0, 0, 255),
+			3.0f, 4.0f, 0.0f, 0.0f, totalProbability);
+	ADD_BALL(0.5f, PragmaEngine::ColorRGBA8(0, 255, 255, 255),
+		3.0f, 4.0f, 0.0f, 0.0f, totalProbability);
+	ADD_BALL(0.5f, PragmaEngine::ColorRGBA8(255, 255, 0, 255),
+		3.0f, 4.0f, 0.0f, 0.0f, totalProbability);
+	// Make a bunch of random ball types
+	for (int i = 0; i < 10000; i++) {
+		ADD_BALL(0.5f, PragmaEngine::ColorRGBA8(r2(randomEngine), r2(randomEngine), r2(randomEngine), 255),
+			r1(randomEngine), r1(randomEngine), 0.0f, 0.0f, totalProbability);
+	}
+
+	// Random probability for ball spawn
+	std::uniform_real_distribution<float> spawn(0.0f, totalProbability);
 
 	// Small optimization that sets the size of the internal array to prevent
 	// extra allocations.
@@ -140,9 +173,9 @@ void MainGame::initBalls() {
 		// Get the ball spawn roll
 		float spawnVal = spawn(randomEngine);
 		// Figure out which ball we picked
-		for (size_t i = 0; i < possibleBalls.size(); i++) {
-			if (spawnVal <= possibleBalls[i].probability) {
-				ballToSpawn = &possibleBalls[i];
+		for (size_t j = 0; j < possibleBalls.size(); j++) {
+			if (spawnVal <= possibleBalls[j].probability) {
+				ballToSpawn = &possibleBalls[j];
 				break;
 			}
 		}
@@ -163,11 +196,13 @@ void MainGame::initBalls() {
 		m_balls.emplace_back(ballToSpawn->radius, ballToSpawn->mass, pos, direction * ballToSpawn->randSpeed(randomEngine),
 			PragmaEngine::ResourceManager::getTexture("Textures/circle.png").id,
 			ballToSpawn->color);
+		// Add the ball do the grid. IF YOU EVER CALL EMPLACE BACK AFTER INIT BALLS, m_grid will have DANGLING POINTERS!
+		m_grid->addBall(&m_balls.back());
 	}
 }
 
 void MainGame::update(float deltaTime) {
-	m_ballController.updateBalls(m_balls, deltaTime, m_screenWidth, m_screenHeight);
+	m_ballController.updateBalls(m_balls, m_grid.get(), deltaTime, m_screenWidth, m_screenHeight);
 }
 
 void MainGame::draw() {
@@ -176,28 +211,21 @@ void MainGame::draw() {
 	// Clear the color and depth buffer
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	m_textureProgram.use();
-
 	glActiveTexture(GL_TEXTURE0);
+
+	// Grab the camera matrix
+	glm::mat4 projectionMatrix = m_camera.getCameraMatrix();
+
+	m_ballRenderers[m_currentRenderer]->renderBalls(m_spriteBatch, m_balls, projectionMatrix);
+
+	m_textureProgram.use();
 
 	// Make sure the shader uses texture 0
 	GLint textureUniform = m_textureProgram.getUniformLocation("mySampler");
 	glUniform1i(textureUniform, 0);
 
-	// Grab the camera matrix
-	glm::mat4 projectionMatrix = m_camera.getCameraMatrix();
 	GLint pUniform = m_textureProgram.getUniformLocation("P");
 	glUniformMatrix4fv(pUniform, 1, GL_FALSE, &projectionMatrix[0][0]);
-
-	m_spriteBatch.begin();
-
-	// Draw balls
-	for (auto& ball : m_balls) {
-		m_ballRenderer.renderBall(m_spriteBatch, ball);
-	}
-
-	m_spriteBatch.end();
-	m_spriteBatch.renderBatch();
 
 	drawHud();
 
@@ -220,6 +248,9 @@ void MainGame::drawHud() {
 }
 
 void MainGame::processInput() {
+	// Update input manager
+	m_inputManager.update();
+
 	SDL_Event evnt;
 	//Will keep looping until there are no more events to process
 	while (SDL_PollEvent(&evnt)) {
@@ -266,5 +297,13 @@ void MainGame::processInput() {
 	}
 	else if (m_inputManager.isKeyPressed(SDLK_SPACE)) {
 		m_ballController.setGravityDirection(GravityDirection::NONE);
+	}
+
+	// Switch renderers
+	if (m_inputManager.isKeyPressed(SDLK_1)) {
+		m_currentRenderer++;
+		if (m_currentRenderer >= m_ballRenderers.size()) {
+			m_currentRenderer = 0;
+		}
 	}
 }
