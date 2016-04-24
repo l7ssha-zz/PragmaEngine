@@ -40,6 +40,9 @@
     <Filter Include="Audio\.h">
       <UniqueIdentifier>{a6ebf0fc-1165-4da0-85d0-1957d72109c0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Core\Interfaces">
+      <UniqueIdentifier>{5661919f-6cd8-42b9-b21b-ccbec052ead1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -102,6 +105,15 @@
     <ClInclude Include="AudioEngine.h">
       <Filter>Audio\.h</Filter>
     </ClInclude>
+    <ClInclude Include="IGameScreen.h">
+      <Filter>Core\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="IMainGame.h">
+      <Filter>Core\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenList.h">
+      <Filter>Core\Interfaces</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera2D.cpp">
@@ -157,6 +169,12 @@
     </ClCompile>
     <ClCompile Include="AudioEngine.cpp">
       <Filter>Audio\.cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="IMainGame.cpp">
+      <Filter>Core\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenList.cpp">
+      <Filter>Core\Interfaces</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
