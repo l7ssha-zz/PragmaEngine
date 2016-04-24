@@ -131,6 +131,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AudioEngine.h" />
+    <ClInclude Include="IGameScreen.h" />
+    <ClInclude Include="IMainGame.h" />
     <ClInclude Include="ParticleBatch2D.h" />
     <ClInclude Include="ParticleEngine2D.h" />
     <ClInclude Include="pg.h" />
@@ -143,6 +145,7 @@
     <ClInclude Include="IOManager.h" />
     <ClInclude Include="picoPNG.h" />
     <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="ScreenList.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteBatch.h" />
     <ClInclude Include="SpriteFont.h" />
@@ -153,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AudioEngine.cpp" />
+    <ClCompile Include="IMainGame.cpp" />
     <ClCompile Include="ParticleBatch2D.cpp" />
     <ClCompile Include="ParticleEngine2D.cpp" />
     <ClCompile Include="pg.cpp" />
@@ -164,6 +168,7 @@
     <ClCompile Include="IOManager.cpp" />
     <ClCompile Include="picoPNG.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="ScreenList.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteBatch.cpp" />
     <ClCompile Include="SpriteFont.cpp" />

@@ -1,16 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS // To shut up the compiler about sprintf...
 #include "MainGame.h"
 
-#include <PragmaEngine/pg.h>
-#include <PragmaEngine/ResourceManager.h>
-#include <SDL/SDL.h>
-#include <random>
-#include <ctime>
-#include <algorithm>
-#include <cmath>
-
 // Some helpful constants.
-const float DESIRED_FPS = 60.0f; // FPS the game is designed to run at
+const float DESIRED_FPS = 120.0f; // FPS the game is designed to run at
 const int MAX_PHYSICS_STEPS = 6; // Max number of physics steps per frame
 const float MS_PER_SECOND = 1000; // Number of milliseconds in a second
 const float DESIRED_FRAMETIME = MS_PER_SECOND / DESIRED_FPS; // The desired frame time per frame

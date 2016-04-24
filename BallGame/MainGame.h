@@ -7,6 +7,14 @@
 #include <PragmaEngine/GLSLProgram.h>
 #include <PragmaEngine/Timing.h>
 #include <PragmaEngine/SpriteFont.h>
+#include <PragmaEngine/pg.h>
+#include <PragmaEngine/ResourceManager.h>
+
+#include <SDL/SDL.h>
+#include <random>
+#include <ctime>
+#include <algorithm>
+#include <cmath>
 #include <memory>
 
 #include "BallController.h"
