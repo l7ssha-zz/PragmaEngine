@@ -1,9 +1,5 @@
 #include "GameplayScreen.h"
 
-#include <iostream>
-#include <SDL/SDL.h>
-#include <PragmaEngine/IMainGame.h>
-
 GameplayScreen::GameplayScreen() {
 }
 

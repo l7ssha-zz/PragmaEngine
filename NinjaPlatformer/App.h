@@ -1,6 +1,8 @@
 #pragma once
 
 #include <PragmaEngine/IMainGame.h>
+#include <PragmaEngine/ScreenList.h>
+
 #include "GameplayScreen.h"
 
 // Our custom app that inherits from IMainGame
