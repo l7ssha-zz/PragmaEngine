@@ -1,5 +1,10 @@
 #include "Level.h"
 
+#include <PragmaEngine/Errors.h>
+#include <fstream>
+#include <iostream>
+#include <PragmaEngine/ResourceManager.h>
+
 Level::Level(const std::string& fileName) {
 	std::ifstream file;
 	file.open(fileName);

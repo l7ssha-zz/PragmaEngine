@@ -2,11 +2,7 @@
 
 #include <string>
 #include <vector>
-#include <fstream>
-#include <iostream>
 
-#include <PragmaEngine/Errors.h>
-#include <PragmaEngine/ResourceManager.h>
 #include <PragmaEngine/SpriteBatch.h>
 
 const int TILE_WIDTH = 64;

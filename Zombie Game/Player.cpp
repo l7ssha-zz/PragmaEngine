@@ -13,11 +13,11 @@ Player::~Player() {
 	// Empty
 }
 
-void Player::init(float speed, glm::vec2 pos, PragmaEngine::InputManager* inputManager, PragmaEngine::Camera2D* camera, std::vector<Bullet>* bullets) {
+void Player::init(float speed, glm::vec2 pos, PragmaEngine::InputManager* inputManager, PragmaEngine::Camera2D* camera, Grid* grid) {
 	_speed = speed;
 	_position = pos;
 	_inputManager = inputManager;
-	_bullets = bullets;
+	m_grid = grid;
 	_camera = camera;
 	_color.r = 255;
 	_color.g = 255;
@@ -38,8 +38,6 @@ void Player::addGun(Gun* gun) {
 }
 
 void Player::update(const std::vector<std::string>& levelData,
-	std::vector<Human*>& humans,
-	std::vector<Zombie*>& zombies,
 	float deltaTime) {
 	if (_inputManager->isKeyDown(SDLK_w)) {
 		_position.y += _speed * deltaTime;
@@ -75,7 +73,7 @@ void Player::update(const std::vector<std::string>& levelData,
 		_guns[_currentGunIndex]->update(_inputManager->isKeyDown(SDL_BUTTON_LEFT),
 			centerPosition,
 			m_direction,
-			*_bullets,
+			m_grid,
 			deltaTime);
 	}
 

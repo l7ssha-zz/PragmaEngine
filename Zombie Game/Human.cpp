@@ -13,12 +13,12 @@ Human::~Human()
 {
 }
 
-void Human::init(float speed, glm::vec2 pos) {
+void Human::init(float speed, glm::vec2 pos, Grid* grid) {
 	static std::mt19937 randomEngine(time(nullptr));
 	static std::uniform_real_distribution<float> randDir(-1.0f, 1.0f);
 
 	_health = 20;
-
+	m_grid = grid;
 	_color.r = 255;
 	_color.g = 255;
 	_color.b = 255;
@@ -37,8 +37,6 @@ void Human::init(float speed, glm::vec2 pos) {
 }
 
 void Human::update(const std::vector<std::string>& levelData,
-	std::vector<Human*>& humans,
-	std::vector<Zombie*>& zombies,
 	float deltaTime) {
 	static std::mt19937 randomEngine(time(nullptr));
 	static std::uniform_real_distribution<float> randRotate(-40.0f, 40.0f);
@@ -46,7 +44,7 @@ void Human::update(const std::vector<std::string>& levelData,
 	_position += m_direction * _speed * deltaTime;
 
 	// Randomly change direction every 20 frames
-	if (_frames == 1000) {
+	if (_frames == 1200) {
 		m_direction = glm::rotate(m_direction, randRotate(randomEngine));
 		_frames = 0;
 	}

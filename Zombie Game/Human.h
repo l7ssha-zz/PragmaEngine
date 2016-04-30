@@ -5,16 +5,15 @@
 class Human : public Agent
 {
 public:
-	Human();
-	virtual ~Human();
+    Human();
+    virtual ~Human();
 
-	void init(float speed, glm::vec2 pos);
+    void init(float speed, glm::vec2 pos, Grid* grid);
 
-	virtual void update(const std::vector<std::string>& levelData,
-		std::vector<Human*>& humans,
-		std::vector<Zombie*>& zombies,
-		float deltaTime) override;
+    virtual void update(const std::vector<std::string>& levelData,
+                        float deltaTime) override;
 
 private:
-	int _frames;
+    int _frames;
 };
+
