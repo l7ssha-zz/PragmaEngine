@@ -1,5 +1,9 @@
 #pragma once
 
+#include <iostream>
+#include <SDL/SDL.h>
+
+#include <PragmaEngine/IMainGame.h>
 #include <PragmaEngine/IGameScreen.h>
 
 // Our custom gameplay screen that inherits from the IGameScreen

@@ -1,32 +1,19 @@
 #pragma once
 
-#include <glm\glm.hpp>
-#include <glm/gtx/rotate_vector.hpp>
-#include <random>
-#include <ctime>
-#include <algorithm>
-#include <SDL/SDL.h>
-#include <iostream>
-
 #include <PragmaEngine/Window.h>
 #include <PragmaEngine/GLSLProgram.h>
 #include <PragmaEngine/Camera2D.h>
 #include <PragmaEngine/InputManager.h>
 #include <PragmaEngine/SpriteBatch.h>
 #include <PragmaEngine/SpriteFont.h>
-#include <PragmaEngine\ParticleBatch2D.h>
-#include <PragmaEngine\ParticleEngine2D.h>
-#include <PragmaEngine\ResourceManager.h>
-#include <PragmaEngine/pg.h>
-#include <PragmaEngine/Timing.h>
-#include <PragmaEngine/Errors.h>
-#include <PragmaEngine\AudioEngine.h>
+#include <PragmaEngine/AudioEngine.h>
+#include <PragmaEngine/ParticleEngine2D.h>
+#include <PragmaEngine/ParticleBatch2D.h>
 
-#include "Gun.h"
-#include "Zombie.h"
 #include "Player.h"
 #include "Level.h"
 #include "Bullet.h"
+#include "Grid.h"
 
 class Zombie;
 
@@ -57,12 +44,6 @@ private:
 	/// Main game loop for the program
 	void gameLoop();
 
-	/// Updates all agents
-	void updateAgents(float deltaTime);
-
-	/// Updates all bullets
-	void updateBullets(float deltaTim);
-
 	/// Checks the victory condition
 	void checkVictory();
 
@@ -74,12 +55,6 @@ private:
 
 	/// Draws the HUD
 	void drawHud();
-
-	/// Adds blood to the particle engine
-	void addBlood(const glm::vec2& position, int numParticles);
-
-	PragmaEngine::ParticleEngine2D m_particleEngine;
-	PragmaEngine::ParticleBatch2D* m_bloodParticleBatch;
 
 	/// Member Variables
 	PragmaEngine::Window m_window; ///< The game window
@@ -94,6 +69,9 @@ private:
 	PragmaEngine::SpriteBatch m_agentSpriteBatch; ///< Draws all agents
 	PragmaEngine::SpriteBatch m_hudSpriteBatch;
 
+	PragmaEngine::ParticleEngine2D m_particleEngine;
+	PragmaEngine::ParticleBatch2D* m_bloodParticleBatch;
+
 	std::vector<Level*> m_levels; ///< vector of all levels
 
 	int m_screenWidth = 1024;
@@ -104,16 +82,17 @@ private:
 	int m_currentLevel;
 
 	Player* m_player;
-	std::vector<Human*> m_humans; ///< Vector of all humans
-	std::vector<Zombie*> m_zombies; ///< Vector of all zombies
-	std::vector<Bullet> m_bullets;
+	Grid m_grid;
 
 	int m_numHumansKilled; ///< Humans killed by player
 	int m_numZombiesKilled; ///< Zombies killed by player
 
 	PragmaEngine::SpriteFont* m_spriteFont;
 
-	PragmaEngine::AudioEngine m_audioengine;
+	PragmaEngine::AudioEngine m_audioEngine;
+
+	int m_totalZombies = 0;
+	int m_totalHumans = 0;
 
 	GameState m_gameState;
 };

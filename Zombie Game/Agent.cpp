@@ -1,4 +1,7 @@
 #include "Agent.h"
+#include <PragmaEngine/ResourceManager.h>
+#include "Level.h"
+#include <algorithm>
 
 Agent::Agent()
 {
@@ -36,13 +39,14 @@ bool Agent::collideWithLevel(const std::vector<std::string>& levelData) {
 		_position.y + AGENT_WIDTH);
 
 	// Check if there was no collision
-	if (collideTilePositions.size() == 0)
+	if (collideTilePositions.size() == 0) {
 		return false;
+	}
 
 	// Do the collision
-	for (int i = 0; i < collideTilePositions.size(); i++)
+	for (int i = 0; i < collideTilePositions.size(); i++) {
 		collideWithTile(collideTilePositions[i]);
-
+	}
 	return true;
 }
 

@@ -5,16 +5,15 @@
 class Zombie : public Agent
 {
 public:
-	Zombie();
-	~Zombie();
+    Zombie();
+    ~Zombie();
 
-	void init(float speed, glm::vec2 pos);
+    void init(float speed, glm::vec2 pos, Grid* grid);
 
-	virtual void update(const std::vector<std::string>& levelData,
-		std::vector<Human*>& humans,
-		std::vector<Zombie*>& zombies,
-		float deltaTime) override;
+    virtual void update(const std::vector<std::string>& levelData,
+                        float deltaTime) override;
 private:
 
-	Human* getNearestHuman(std::vector<Human*>& humans);
+    Human* getNearestHuman(std::vector<Human*>& humans);
 };
+

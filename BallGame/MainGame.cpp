@@ -291,11 +291,19 @@ void MainGame::processInput() {
 		m_ballController.setGravityDirection(GravityDirection::NONE);
 	}
 
-	// Switch renderers
+	/* Switch renderers
 	if (m_inputManager.isKeyPressed(SDLK_1)) {
 		m_currentRenderer++;
 		if (m_currentRenderer >= m_ballRenderers.size()) {
 			m_currentRenderer = 0;
 		}
 	}
+	*/
+
+	if (m_inputManager.isKeyPressed(SDLK_1))
+		m_currentRenderer = 0;
+	if (m_inputManager.isKeyPressed(SDLK_2))
+		m_currentRenderer = 1;
+	if (m_inputManager.isKeyPressed(SDLK_3))
+		m_currentRenderer = 2;
 }

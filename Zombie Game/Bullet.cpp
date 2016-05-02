@@ -1,10 +1,17 @@
 #include "Bullet.h"
+#include <PragmaEngine/ResourceManager.h>
 
-Bullet::Bullet(glm::vec2 position, glm::vec2 direction, float damage, float speed) :
+#include "Agent.h"
+#include "Human.h"
+#include "Zombie.h"
+#include "Level.h"
+
+Bullet::Bullet(glm::vec2 position, glm::vec2 direction, float damage, float speed, Grid* grid) :
 	_position(position),
 	_direction(direction),
 	_damage(damage),
-	_speed(speed) {
+	_speed(speed),
+	m_grid(grid) {
 	// Empty
 }
 
@@ -18,8 +25,8 @@ bool Bullet::update(const std::vector<std::string>& levelData, float deltaTime) 
 }
 
 void Bullet::draw(PragmaEngine::SpriteBatch& spriteBatch) {
-	glm::vec4 destRect(_position.x + BULLET_RADIUS,
-		_position.y + BULLET_RADIUS,
+	glm::vec4 destRect(_position.x,
+		_position.y,
 		BULLET_RADIUS * 2,
 		BULLET_RADIUS * 2);
 	const glm::vec4 uvRect(0.0f, 0.0f, 1.0f, 1.0f);

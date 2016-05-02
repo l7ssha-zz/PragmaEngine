@@ -51,6 +51,9 @@
     <ClCompile Include="Gun.cpp">
       <Filter>Core\Guns</Filter>
     </ClCompile>
+    <ClCompile Include="Grid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Agent.h">
@@ -76,6 +79,9 @@
     </ClInclude>
     <ClInclude Include="Gun.h">
       <Filter>Core\Guns</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
