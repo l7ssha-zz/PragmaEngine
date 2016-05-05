@@ -95,4 +95,7 @@ private:
 	int m_totalHumans = 0;
 
 	GameState m_gameState;
+
+	std::vector<std::string> _playlist = { "Sound/shots/cg1.wav", "Sound/shots/pistol.wav", "Sound/shots/rifle.wav", "Sound/shots/shotgun.wav" };
+
 };

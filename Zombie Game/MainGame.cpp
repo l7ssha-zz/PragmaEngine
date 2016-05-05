@@ -42,7 +42,8 @@ void MainGame::run() {
 
 	initLevel();
 
-	m_audioEngine.playMusic("Sound/XYZ.ogg", 0.8f);
+	m_audioEngine.playMusic("Sound/ghosts.ogg", 0.8f);
+	//m_audioEngine.playMusicfromplaylist(_playlist, 1.0f);
 
 	gameLoop();
 }

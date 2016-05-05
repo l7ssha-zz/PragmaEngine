@@ -80,7 +80,7 @@ namespace PragmaEngine {
 	}
 
 	bool IMainGame::initSystems() {
-		m_window.create("Default", 1920, 1080, 0);
+		m_window.create("Default", 800, 600, 0);
 		return true;
 	}
 
