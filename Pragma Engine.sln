@@ -2,13 +2,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test", "Test\Test.vcxproj", "{C5FEEA8A-4E35-469D-B918-50130B0983DD}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Zombie Game", "Zombie Game\Zombie Game.vcxproj", "{AED3DE00-561B-4E23-9278-06413A4BF633}"
-	ProjectSection(ProjectDependencies) = postProject
-		{EC790B2D-EFF5-4F99-8E19-301D80F7E274} = {EC790B2D-EFF5-4F99-8E19-301D80F7E274}
-	EndProjectSection
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PragmaEngine", "PragmaEngine\Pragma Engine.vcxproj", "{EC790B2D-EFF5-4F99-8E19-301D80F7E274}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BallGame", "BallGame\BallGame.vcxproj", "{48B35B18-988A-4DFE-9DBE-FA3BD8942430}"
@@ -23,22 +16,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C5FEEA8A-4E35-469D-B918-50130B0983DD}.Debug|x64.ActiveCfg = Debug|x64
-		{C5FEEA8A-4E35-469D-B918-50130B0983DD}.Debug|x64.Build.0 = Debug|x64
-		{C5FEEA8A-4E35-469D-B918-50130B0983DD}.Debug|x86.ActiveCfg = Debug|Win32
-		{C5FEEA8A-4E35-469D-B918-50130B0983DD}.Debug|x86.Build.0 = Debug|Win32
-		{C5FEEA8A-4E35-469D-B918-50130B0983DD}.Release|x64.ActiveCfg = Release|x64
-		{C5FEEA8A-4E35-469D-B918-50130B0983DD}.Release|x64.Build.0 = Release|x64
-		{C5FEEA8A-4E35-469D-B918-50130B0983DD}.Release|x86.ActiveCfg = Release|Win32
-		{C5FEEA8A-4E35-469D-B918-50130B0983DD}.Release|x86.Build.0 = Release|Win32
-		{AED3DE00-561B-4E23-9278-06413A4BF633}.Debug|x64.ActiveCfg = Debug|x64
-		{AED3DE00-561B-4E23-9278-06413A4BF633}.Debug|x64.Build.0 = Debug|x64
-		{AED3DE00-561B-4E23-9278-06413A4BF633}.Debug|x86.ActiveCfg = Debug|Win32
-		{AED3DE00-561B-4E23-9278-06413A4BF633}.Debug|x86.Build.0 = Debug|Win32
-		{AED3DE00-561B-4E23-9278-06413A4BF633}.Release|x64.ActiveCfg = Release|x64
-		{AED3DE00-561B-4E23-9278-06413A4BF633}.Release|x64.Build.0 = Release|x64
-		{AED3DE00-561B-4E23-9278-06413A4BF633}.Release|x86.ActiveCfg = Release|Win32
-		{AED3DE00-561B-4E23-9278-06413A4BF633}.Release|x86.Build.0 = Release|Win32
 		{EC790B2D-EFF5-4F99-8E19-301D80F7E274}.Debug|x64.ActiveCfg = Debug|x64
 		{EC790B2D-EFF5-4F99-8E19-301D80F7E274}.Debug|x64.Build.0 = Debug|x64
 		{EC790B2D-EFF5-4F99-8E19-301D80F7E274}.Debug|x86.ActiveCfg = Debug|Win32

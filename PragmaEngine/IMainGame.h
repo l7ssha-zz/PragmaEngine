@@ -1,52 +1,66 @@
+/*
+------------------------- PragmaEngine BY L7SSHA | ALL RIGTS RESERVED -------------------------
+PragamEngine version 3.0
+Copyright (c) 2016 Szymon "l7ssha" Uglis
+
+This software is provided 'as-is', without any express or implied
+warranty. In no event will the authors be held liable for any damages
+arising from the use of this software.
+Permission is granted to no one to use this software for any purpose,
+including commercial application
+
+------------------------- PragmaEngine BY L7SSHA | ALL RIGTS RESERVED -------------------------
+*/
 #pragma once
 
 #include "pg.h"
 #include "Window.h"
 #include "InputManager.h"
-#include "Timing.h"
-#include "ScreenList.h"
-#include "IGameScreen.h"
-
 #include <memory>
 
 namespace PragmaEngine {
-	class IMainGame {
-	public:
-		IMainGame();
-		virtual ~IMainGame();
 
-		// Runs and initializes the game
-		void run();
-		// Exits the game
-		void exitGame();
+    class ScreenList;
+    class IGameScreen;
 
-		// Called on initialization
-		virtual void onInit() = 0;
-		// For adding all screens
-		virtual void addScreens() = 0;
-		// Called when exiting
-		virtual void onExit() = 0;
+    class IMainGame {
+    public:
+        IMainGame();
+        virtual ~IMainGame();
 
-		void onSDLEvent(SDL_Event& evnt);
+        // Runs and initializes the game
+        void run();
+        // Exits the game
+        void exitGame();
 
-		const float getFps() const {
-			return m_fps;
-		}
+        // Called on initialization
+        virtual void onInit() = 0;
+        // For adding all screens
+        virtual void addScreens() = 0;
+        // Called when exiting
+        virtual void onExit() = 0;
 
-	protected:
-		// Custom update function
-		virtual void update();
-		// Custom render function
-		virtual void draw();
+        void onSDLEvent(SDL_Event& evnt);
 
-		bool init();
-		bool initSystems();
+        const float getFps() const {
+            return m_fps;
+        }
 
-		std::unique_ptr<ScreenList> m_screenList = nullptr;
-		IGameScreen* m_currentScreen = nullptr;
-		bool m_isRunning = false;
-		float m_fps = 0.0f;
-		Window m_window;
-		InputManager m_inputManager;
-	};
+        InputManager inputManager;
+
+    protected:
+        // Custom update function
+        virtual void update();
+        // Custom render function
+        virtual void draw();
+
+        bool init();
+        bool initSystems();
+
+        std::unique_ptr<ScreenList> m_screenList = nullptr;
+        IGameScreen* m_currentScreen = nullptr;
+        bool m_isRunning = false;
+        float m_fps = 0.0f;
+        Window m_window;
+    };
 }

@@ -1,55 +1,56 @@
 /*
 ------------------------- PragmaEngine BY L7SSHA | ALL RIGTS RESERVED -------------------------
-PragamEngine version 2.0
+PragamEngine version 3.0
 Copyright (c) 2016 Szymon "l7ssha" Uglis
 
 This software is provided 'as-is', without any express or implied
 warranty. In no event will the authors be held liable for any damages
 arising from the use of this software.
-
 Permission is granted to no one to use this software for any purpose,
 including commercial application
 
 ------------------------- PragmaEngine BY L7SSHA | ALL RIGTS RESERVED -------------------------
 */
-
 #pragma once
+
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
 namespace PragmaEngine {
-	//Camera class for 2D games
-	class Camera2D
-	{
-	public:
-		Camera2D();
-		~Camera2D();
 
-		//sets up the orthographic matrix and screen dimensions
-		void init(int screenWidth, int screenHeight);
+    //Camera class for 2D games
+    class Camera2D
+    {
+    public:
+        Camera2D();
+        ~Camera2D();
 
-		//updates the camera matrix if needed
-		void update();
+        //sets up the orthographic matrix and screen dimensions
+        void init(int screenWidth, int screenHeight);
 
-		glm::vec2 convertScreenToWorld(glm::vec2 screenCoords);
+        //updates the camera matrix if needed
+        void update();
 
-		bool isBoxInView(const glm::vec2& position, const glm::vec2& dimensions);
+        glm::vec2 convertScreenToWorld(glm::vec2 screenCoords);
 
-		//setters
-		void setPosition(const glm::vec2& newPosition) { _position = newPosition; _needsMatrixUpdate = true; }
-		void setScale(float newScale) { _scale = newScale; _needsMatrixUpdate = true; }
+        bool isBoxInView(const glm::vec2& position, const glm::vec2& dimensions);
 
-		//getters
-		glm::vec2 getPosition() { return _position; }
-		float getScale() { return _scale; }
-		glm::mat4 getCameraMatrix() { return _cameraMatrix; }
+        //setters
+        void setPosition(const glm::vec2& newPosition) { _position = newPosition; _needsMatrixUpdate = true; }
+        void setScale(float newScale) { _scale = newScale; _needsMatrixUpdate = true; }
 
-	private:
-		int _screenWidth, _screenHeight;
-		bool _needsMatrixUpdate;
-		float _scale;
-		glm::vec2 _position;
-		glm::mat4 _cameraMatrix;
-		glm::mat4 _orthoMatrix;
-	};
+        //getters
+        glm::vec2 getPosition() { return _position; }
+        float getScale() { return _scale; }
+        glm::mat4 getCameraMatrix() { return _cameraMatrix; }
+
+    private:
+        int _screenWidth, _screenHeight;
+        bool _needsMatrixUpdate;
+        float _scale;
+        glm::vec2 _position;
+        glm::mat4 _cameraMatrix;
+        glm::mat4 _orthoMatrix;
+    };
+
 }

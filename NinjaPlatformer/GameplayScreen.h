@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Box.h"
+#include "Player.h"
 #include <PragmaEngine/IGameScreen.h>
 #include <Box2D/Box2D.h>
 #include <vector>
@@ -35,12 +36,13 @@ public:
 private:
     void checkInput();
 
-	PragmaEngine::SpriteBatch m_spriteBatch;
-	PragmaEngine::GLSLProgram m_textureProgram;
-	PragmaEngine::Camera2D m_camera;
-	PragmaEngine::GLTexture m_texture;
-	PragmaEngine::Window* m_window;
+    PragmaEngine::SpriteBatch m_spriteBatch;
+    PragmaEngine::GLSLProgram m_textureProgram;
+    PragmaEngine::Camera2D m_camera;
+    PragmaEngine::GLTexture m_texture;
+    PragmaEngine::Window* m_window;
 
+    Player m_player;
     std::vector<Box> m_boxes;
     std::unique_ptr<b2World> m_world;
 };
