@@ -1,8 +1,10 @@
 #define _CRT_SECURE_NO_WARNINGS // To shut up the compiler about sprintf...
+
 #include "MainGame.h"
 
 #include <PragmaEngine/pg.h>
 #include <PragmaEngine/ResourceManager.h>
+
 #include <SDL/SDL.h>
 #include <random>
 #include <ctime>
@@ -10,11 +12,11 @@
 #include <cmath>
 
 // Some helpful constants.
-const float DESIRED_FPS = 60.0f; // FPS the game is designed to run at
-const int MAX_PHYSICS_STEPS = 6; // Max number of physics steps per frame
-const float MS_PER_SECOND = 1000; // Number of milliseconds in a second
-const float DESIRED_FRAMETIME = MS_PER_SECOND / DESIRED_FPS; // The desired frame time per frame
-const float MAX_DELTA_TIME = 1.0f; // Maximum size of deltaTime
+const float DESIRED_FPS = 60.0f;								// FPS the game is designed to run at
+const int MAX_PHYSICS_STEPS = 6;								// Max number of physics steps per frame
+const float MS_PER_SECOND = 1000;								// Number of milliseconds in a second
+const float DESIRED_FRAMETIME = MS_PER_SECOND / DESIRED_FPS;	// The desired frame time per frame
+const float MAX_DELTA_TIME = 1.0f;								// Maximum size of deltaTime
 
 MainGame::~MainGame() {
     // Empty
@@ -125,7 +127,7 @@ void MainGame::initBalls() {
     possibleBalls.emplace_back(__VA_ARGS__);
 
     // Number of balls to spawn
-    const int NUM_BALLS = 9000;
+    const int NUM_BALLS = 6000;
 
     // Random engine stuff
     std::mt19937 randomEngine((unsigned int)time(nullptr));
@@ -155,11 +157,10 @@ void MainGame::initBalls() {
     ADD_BALL(1.0f, PragmaEngine::ColorRGBA8(255, 255, 0, 255),
              3.0f, 4.0f, 0.0f, 0.0f, totalProbability);
     // Make a bunch of random ball types
-    for (int i = 0; i < 10000; i++) {
-        ADD_BALL(1.0f, PragmaEngine::ColorRGBA8(r2(randomEngine), r2(randomEngine), r2(randomEngine), 255),
-                 r1(randomEngine), r1(randomEngine), 0.0f, 0.0f, totalProbability);
-    }
-
+	for (int i = 0; i < 10000; i++) {
+		ADD_BALL(1.0f, PragmaEngine::ColorRGBA8(r2(randomEngine), r2(randomEngine), r2(randomEngine), 255),
+			r1(randomEngine), r1(randomEngine), 0.0f, 0.0f, totalProbability);
+	}
     // Random probability for ball spawn
     std::uniform_real_distribution<float> spawn(0.0f, totalProbability);
 
@@ -278,27 +279,25 @@ void MainGame::processInput() {
         }
     }
 
-    if (m_inputManager.isKeyPressed(SDLK_ESCAPE)) {
+    if (m_inputManager.isKeyPressed(SDLK_ESCAPE))
         m_gameState = GameState::EXIT;
-    }
+
     // Handle gravity changes
-    if (m_inputManager.isKeyPressed(SDLK_LEFT)) {
+    if (m_inputManager.isKeyPressed(SDLK_LEFT))
         m_ballController.setGravityDirection(GravityDirection::LEFT);
-    } else if (m_inputManager.isKeyPressed(SDLK_RIGHT)) {
+	else if (m_inputManager.isKeyPressed(SDLK_RIGHT))
         m_ballController.setGravityDirection(GravityDirection::RIGHT);
-    } else if (m_inputManager.isKeyPressed(SDLK_UP)) {
+    else if (m_inputManager.isKeyPressed(SDLK_UP))
         m_ballController.setGravityDirection(GravityDirection::UP);
-    } else if (m_inputManager.isKeyPressed(SDLK_DOWN)) {
+    else if (m_inputManager.isKeyPressed(SDLK_DOWN))
         m_ballController.setGravityDirection(GravityDirection::DOWN);
-    } else if (m_inputManager.isKeyPressed(SDLK_SPACE)) {
+    else if (m_inputManager.isKeyPressed(SDLK_SPACE))
         m_ballController.setGravityDirection(GravityDirection::NONE);
-    }
 
     // Switch renderers
     if (m_inputManager.isKeyPressed(SDLK_1)) {
         m_currentRenderer++;
-        if (m_currentRenderer >= (int)m_ballRenderers.size()) {
+        if (m_currentRenderer >= (int)m_ballRenderers.size())
             m_currentRenderer = 0;
-        }
     }
 }

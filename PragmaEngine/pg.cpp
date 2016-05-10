@@ -27,6 +27,7 @@ namespace PragmaEngine {
         SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
         return 0;
+
     }
 
 }
