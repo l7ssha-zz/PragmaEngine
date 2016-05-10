@@ -19,92 +19,14 @@
     <Filter Include="Core">
       <UniqueIdentifier>{aea932bf-0deb-4ea1-b6c7-eeee84902ccf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Graphics\Header Files">
-      <UniqueIdentifier>{af6d5cc0-27db-4954-8467-de4801083968}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Graphics\.cpp">
-      <UniqueIdentifier>{531c6ce5-b9bd-4d23-8049-b5d40c59770b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Headers File">
-      <UniqueIdentifier>{61c60bbd-d526-4a68-81cb-e34b0755a4b0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\.cpp">
-      <UniqueIdentifier>{14d06eda-560d-4ec6-a51d-fd758e9a97f9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Audio">
       <UniqueIdentifier>{f30d7f05-9e3f-45f7-a6fc-c9ccd7d48ac3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Audio\.cpp">
-      <UniqueIdentifier>{cc129780-bef4-454c-a4f4-6519a3a10fab}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Audio\.h">
-      <UniqueIdentifier>{a6ebf0fc-1165-4da0-85d0-1957d72109c0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Core\Interfaces">
       <UniqueIdentifier>{5661919f-6cd8-42b9-b21b-ccbec052ead1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Window.h">
-      <Filter>Core\Headers File</Filter>
-    </ClInclude>
-    <ClInclude Include="Errors.h">
-      <Filter>Core\Headers File</Filter>
-    </ClInclude>
-    <ClInclude Include="InputManager.h">
-      <Filter>Core\Headers File</Filter>
-    </ClInclude>
-    <ClInclude Include="IOManager.h">
-      <Filter>Core\Headers File</Filter>
-    </ClInclude>
-    <ClInclude Include="pg.h">
-      <Filter>Core\Headers File</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourceManager.h">
-      <Filter>Core\Headers File</Filter>
-    </ClInclude>
-    <ClInclude Include="SpriteBatch.h">
-      <Filter>Core\Headers File</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureCache.h">
-      <Filter>Core\Headers File</Filter>
-    </ClInclude>
-    <ClInclude Include="Timing.h">
-      <Filter>Core\Headers File</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera2D.h">
-      <Filter>Core\Headers File</Filter>
-    </ClInclude>
-    <ClInclude Include="Vertex.h">
-      <Filter>Graphics\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Sprite.h">
-      <Filter>Graphics\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ImageLoader.h">
-      <Filter>Graphics\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="picoPNG.h">
-      <Filter>Graphics\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GLTexture.h">
-      <Filter>Graphics\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GLSLProgram.h">
-      <Filter>Graphics\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SpriteFont.h">
-      <Filter>Graphics\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleBatch2D.h">
-      <Filter>Graphics\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleEngine2D.h">
-      <Filter>Graphics\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AudioEngine.h">
-      <Filter>Audio\.h</Filter>
-    </ClInclude>
     <ClInclude Include="IGameScreen.h">
       <Filter>Core\Interfaces</Filter>
     </ClInclude>
@@ -114,67 +36,127 @@
     <ClInclude Include="ScreenList.h">
       <Filter>Core\Interfaces</Filter>
     </ClInclude>
+    <ClInclude Include="GLSLProgram.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="GLTexture.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageLoader.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleBatch2D.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleEngine2D.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="picoPNG.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteFont.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera2D.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Errors.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="IOManager.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="pg.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteBatch.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureCache.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Timing.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioEngine.h">
+      <Filter>Audio</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Camera2D.cpp">
-      <Filter>Core\.cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="Errors.cpp">
-      <Filter>Core\.cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="InputManager.cpp">
-      <Filter>Core\.cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="IOManager.cpp">
-      <Filter>Core\.cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="pg.cpp">
-      <Filter>Core\.cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="ResourceManager.cpp">
-      <Filter>Core\.cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="SpriteBatch.cpp">
-      <Filter>Core\.cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureCache.cpp">
-      <Filter>Core\.cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="Window.cpp">
-      <Filter>Core\.cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="Sprite.cpp">
-      <Filter>Graphics\.cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="picoPNG.cpp">
-      <Filter>Graphics\.cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="ImageLoader.cpp">
-      <Filter>Graphics\.cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="GLSLProgram.cpp">
-      <Filter>Graphics\.cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="Timing.cpp">
-      <Filter>Core\.cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="SpriteFont.cpp">
-      <Filter>Graphics\.cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticleBatch2D.cpp">
-      <Filter>Graphics\.cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticleEngine2D.cpp">
-      <Filter>Graphics\.cpp</Filter>
-    </ClCompile>
-    <ClCompile Include="AudioEngine.cpp">
-      <Filter>Audio\.cpp</Filter>
-    </ClCompile>
     <ClCompile Include="IMainGame.cpp">
       <Filter>Core\Interfaces</Filter>
     </ClCompile>
     <ClCompile Include="ScreenList.cpp">
       <Filter>Core\Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="GLSLProgram.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageLoader.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleBatch2D.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleEngine2D.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="picoPNG.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteFont.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera2D.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Errors.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="IOManager.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="pg.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteBatch.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureCache.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Timing.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioEngine.cpp">
+      <Filter>Audio</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
