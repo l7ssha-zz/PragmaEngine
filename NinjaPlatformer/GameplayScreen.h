@@ -10,6 +10,7 @@
 #include <PragmaEngine/Camera2D.h>
 #include <PragmaEngine/GLTexture.h>
 #include <PragmaEngine/Window.h>
+#include <PragmaEngine/DebugRenderer.h>
 
 // Our custom gameplay screen that inherits from the IGameScreen
 class GameplayScreen : public PragmaEngine::IGameScreen {
@@ -38,9 +39,13 @@ private:
 
     PragmaEngine::SpriteBatch m_spriteBatch;
     PragmaEngine::GLSLProgram m_textureProgram;
+    PragmaEngine::GLSLProgram m_lightProgram;
     PragmaEngine::Camera2D m_camera;
     PragmaEngine::GLTexture m_texture;
     PragmaEngine::Window* m_window;
+    PragmaEngine::DebugRenderer m_debugRenderer;
+
+    bool m_renderDebug = false;
 
     Player m_player;
     std::vector<Box> m_boxes;

@@ -1,16 +1,3 @@
-/*
-------------------------- PragmaEngine BY L7SSHA | ALL RIGTS RESERVED -------------------------
-PragamEngine version 3.0
-Copyright (c) 2016 Szymon "l7ssha" Uglis
-
-This software is provided 'as-is', without any express or implied
-warranty. In no event will the authors be held liable for any damages
-arising from the use of this software.
-Permission is granted to no one to use this software for any purpose,
-including commercial application
-
-------------------------- PragmaEngine BY L7SSHA | ALL RIGTS RESERVED -------------------------
-*/
 #include "IMainGame.h"
 #include "Timing.h"
 
@@ -39,13 +26,15 @@ namespace PragmaEngine {
         while (m_isRunning) {
             limiter.begin();
 
-            // Call the custom update and draw method
             inputManager.update();
+            // Call the custom update and draw method
             update();
-            draw();
+            if (m_isRunning) {
+                draw();
 
-            m_fps = limiter.end();
-            m_window.swapBuffer();
+                m_fps = limiter.end();
+                m_window.swapBuffer();
+            }
         }
 
     }
@@ -83,7 +72,7 @@ namespace PragmaEngine {
     }
 
     bool IMainGame::init() {
-		PragmaEngine::init();
+        PragmaEngine::init();
 
         SDL_GL_SetAttribute(SDL_GL_ACCELERATED_VISUAL, 1);
 
@@ -100,7 +89,7 @@ namespace PragmaEngine {
     }
 
     bool IMainGame::initSystems() {
-        m_window.create("Default", 1024, 768, 0);
+        m_window.create("Default", 1920, 1080, 0);
         return true;
     }
 

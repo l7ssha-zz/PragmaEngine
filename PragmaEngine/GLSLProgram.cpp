@@ -1,18 +1,6 @@
-/*
-------------------------- PragmaEngine BY L7SSHA | ALL RIGTS RESERVED -------------------------
-PragamEngine version 3.0
-Copyright (c) 2016 Szymon "l7ssha" Uglis
-
-This software is provided 'as-is', without any express or implied
-warranty. In no event will the authors be held liable for any damages
-arising from the use of this software.
-Permission is granted to no one to use this software for any purpose,
-including commercial application
-
-------------------------- PragmaEngine BY L7SSHA | ALL RIGTS RESERVED -------------------------
-*/
 #include "GLSLProgram.h"
 #include "Errors.h"
+#include "IOManager.h"
 
 #include <vector>
 
@@ -32,7 +20,17 @@ namespace PragmaEngine {
     }
 
     //Compiles the shaders into a form that your GPU can understand
-    void GLSLProgram::compileShaders(const std::string& vertexShaderFilePath, const std::string& fragmentShaderFilepath) {
+    void GLSLProgram::compileShaders(const std::string& vertexShaderFilePath, const std::string& fragmentShaderFilePath) {
+        std::string vertSource;
+        std::string fragSource;
+        
+        IOManager::readFileToBuffer(vertexShaderFilePath, vertSource);
+        IOManager::readFileToBuffer(fragmentShaderFilePath, fragSource);
+
+        compileShadersFromSource(vertSource.c_str(), fragSource.c_str());
+    }
+
+    void GLSLProgram::compileShadersFromSource(const char* vertexSource, const char* fragmentSource) {
         //Vertex and fragment shaders are successfully compiled.
         //Now time to link them together into a program.
         //Get a program object.
@@ -51,8 +49,8 @@ namespace PragmaEngine {
         }
 
         //Compile each shader
-        compileShader(vertexShaderFilePath, _vertexShaderID);
-        compileShader(fragmentShaderFilepath, _fragmentShaderID);
+        compileShader(vertexSource, "Vertex Shader", _vertexShaderID);
+        compileShader(fragmentSource, "Fragment Shader", _fragmentShaderID);
     }
 
     void GLSLProgram::linkShaders() {
@@ -75,8 +73,6 @@ namespace PragmaEngine {
             //The maxLength includes the NULL character
             std::vector<char> errorLog(maxLength);
             glGetProgramInfoLog(_programID, maxLength, &maxLength, &errorLog[0]);
-
-
 
             //We don't need the program anymore.
             glDeleteProgram(_programID);
@@ -126,32 +122,15 @@ namespace PragmaEngine {
         }
     }
 
+    void GLSLProgram::dispose() {
+        if (_programID) glDeleteProgram(_programID);
+    }
+
     //Compiles a single shader file
-    void GLSLProgram::compileShader(const std::string& filePath, GLuint id) {
+    void GLSLProgram::compileShader(const char* source, const std::string& name, GLuint id) {
 
-        //Open the file
-        std::ifstream shaderFile(filePath);
-        if (shaderFile.fail()) {
-            perror(filePath.c_str());
-            fatalError("Failed to open " + filePath);
-        }
-
-        //File contents stores all the text in the file
-        std::string fileContents = "";
-        //line is used to grab each line of the file
-        std::string line;
-
-        //Get all the lines in the file and add it to the contents
-        while (std::getline(shaderFile, line)) {
-            fileContents += line + "\n";
-        }
-
-        shaderFile.close();
-
-        //get a pointer to our file contents c string;
-        const char* contentsPtr = fileContents.c_str();
         //tell opengl that we want to use fileContents as the contents of the shader file
-        glShaderSource(id, 1, &contentsPtr, nullptr);
+        glShaderSource(id, 1, &source, nullptr);
 
         //compile the shader
         glCompileShader(id);
@@ -175,7 +154,7 @@ namespace PragmaEngine {
 
             //Print error log and quit
             std::printf("%s\n", &(errorLog[0]));
-            fatalError("Shader " + filePath + " failed to compile");
+            fatalError("Shader " + name + " failed to compile");
         }
     }
 

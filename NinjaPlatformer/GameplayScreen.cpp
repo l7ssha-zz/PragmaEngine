@@ -5,6 +5,8 @@
 #include <PragmaEngine/ResourceManager.h>
 #include <random>
 
+#include "Light.h"
+
 GameplayScreen::GameplayScreen(PragmaEngine::Window* window) : m_window(window) {
 }
 
@@ -30,6 +32,8 @@ void GameplayScreen::onEntry() {
     b2Vec2 gravity(0.0f, -25.0);
     m_world = std::make_unique<b2World>(gravity);
 
+    m_debugRenderer.init();
+
     // Make the ground
     b2BodyDef groundBodyDef;
     groundBodyDef.position.Set(0.0f, -20.0f);
@@ -48,7 +52,7 @@ void GameplayScreen::onEntry() {
     std::uniform_real_distribution<float> yPos(-10.0, 25.0f);
     std::uniform_real_distribution<float> size(0.5, 2.5f);
     std::uniform_int_distribution<int> color(50, 255);
-    const int NUM_BOXES = 100;
+    const int NUM_BOXES = 10;
 
     for (int i = 0; i < NUM_BOXES; i++) {
         PragmaEngine::ColorRGBA8 randColor;
@@ -65,22 +69,29 @@ void GameplayScreen::onEntry() {
     m_spriteBatch.init();
 
     // Shader init
-    // Compile our color shader
+    // Compile our texture
     m_textureProgram.compileShaders("Shaders/textureShading.vert", "Shaders/textureShading.frag");
     m_textureProgram.addAttribute("vertexPosition");
     m_textureProgram.addAttribute("vertexColor");
     m_textureProgram.addAttribute("vertexUV");
     m_textureProgram.linkShaders();
+    // Compile our light shader
+    m_lightProgram.compileShaders("Shaders/lightShading.vert", "Shaders/lightShading.frag");
+    m_lightProgram.addAttribute("vertexPosition");
+    m_lightProgram.addAttribute("vertexColor");
+    m_lightProgram.addAttribute("vertexUV");
+    m_lightProgram.linkShaders();
 
     // Init camera
     m_camera.init(m_window->getScreenWidth(), m_window->getScreenHeight());
     m_camera.setScale(32.0f);
 
     // Init player
-    m_player.init(m_world.get(), glm::vec2(0.0f, 30.0f), glm::vec2(1.0f, 2.0f), PragmaEngine::ColorRGBA8(255, 255, 255, 255));
+    m_player.init(m_world.get(), glm::vec2(0.0f, 30.0f), glm::vec2(2.0f), glm::vec2(1.0f, 1.8f), PragmaEngine::ColorRGBA8(255, 255, 255, 255));
 }
 
 void GameplayScreen::onExit() {
+    m_debugRenderer.dispose();
 }
 
 void GameplayScreen::update() {
@@ -119,6 +130,54 @@ void GameplayScreen::draw() {
     m_spriteBatch.end();
     m_spriteBatch.renderBatch();
     m_textureProgram.unuse();
+
+    // Debug rendering
+    if (m_renderDebug) {
+        glm::vec4 destRect;
+        for (auto& b : m_boxes) {       
+            destRect.x = b.getBody()->GetPosition().x - b.getDimensions().x / 2.0f;
+            destRect.y = b.getBody()->GetPosition().y - b.getDimensions().y / 2.0f;
+            destRect.z = b.getDimensions().x;
+            destRect.w = b.getDimensions().y;
+            m_debugRenderer.drawBox(destRect, PragmaEngine::ColorRGBA8(255, 255, 255, 255), b.getBody()->GetAngle());
+        }
+        m_player.drawDebug(m_debugRenderer);
+        // Render player
+        m_debugRenderer.end();
+        m_debugRenderer.render(projectionMatrix, 2.0f);
+    }
+
+    // Render some test lights
+    // TODO: Don't hardcode this!
+    Light playerLight;
+    playerLight.color = PragmaEngine::ColorRGBA8(255, 255, 255, 128);
+    playerLight.position = m_player.getPosition();
+    playerLight.size = 30.0f;
+
+    Light mouseLight;
+    mouseLight.color = PragmaEngine::ColorRGBA8(255, 0, 255, 150);
+    mouseLight.position = m_camera.convertScreenToWorld(m_game->inputManager.getMouseCoords());
+    mouseLight.size = 45.0f;
+
+    m_lightProgram.use();
+    pUniform = m_textureProgram.getUniformLocation("P");
+    glUniformMatrix4fv(pUniform, 1, GL_FALSE, &projectionMatrix[0][0]);
+
+    // Additive blending
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+
+    m_spriteBatch.begin();
+
+    playerLight.draw(m_spriteBatch);
+    mouseLight.draw(m_spriteBatch);
+
+    m_spriteBatch.end();
+    m_spriteBatch.renderBatch();
+
+    m_lightProgram.unuse();
+
+    // Reset to regular alpha blending
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 void GameplayScreen::checkInput() {
