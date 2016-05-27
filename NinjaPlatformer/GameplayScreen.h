@@ -45,7 +45,7 @@ private:
     PragmaEngine::Window* m_window;
     PragmaEngine::DebugRenderer m_debugRenderer;
 
-    bool m_renderDebug = false;
+    bool m_renderDebug = true;
 
     Player m_player;
     std::vector<Box> m_boxes;

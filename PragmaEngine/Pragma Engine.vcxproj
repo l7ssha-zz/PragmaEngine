@@ -90,7 +90,7 @@
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Lib>
-      <AdditionalDependencies>glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glew32.lib;opengl32.lib;SDL2main.lib;SDL2.lib;SDL2_ttf.lib;SDL2_mixer.lib;irrKlang.lib;BOX2D.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -113,7 +113,7 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalDependencies>glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glew32.lib;opengl32.lib;SDL2main.lib;SDL2.lib;SDL2_ttf.lib;SDL2_mixer.lib;irrKlang.lib;BOX2D.lib;CEGUIBase-0.lib;CEGUIOpenGLRenderer-0.lib</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
