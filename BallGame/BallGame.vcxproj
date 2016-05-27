@@ -72,11 +72,11 @@
     <OutDir>$(SolutionDir)BUILD\$(ProjectName)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)BUILD\$(ProjectName)\$(Configuration)\IMMEDIATE\</IntDir>
     <IncludePath>F:\VisualStudioProjects\PragmaEngine;F:\VisualStudioProjects\PragmaEngine\Dependencies\include;$(IncludePath)</IncludePath>
-    <LibraryPath>F:\VisualStudioProjects\PragmaEngine\BUILD\PragmaEngine\Release\;F:\VisualStudioProjects\PragmaEngine\Dependencies\libs;$(LibraryPath)</LibraryPath>
+    <LibraryPath>F:\VisualStudioProjects\PragmaEngine\BUILD\PragmaEngine\Release\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>F:\VisualStudioProjects\PragmaEngine\Dependencies\include;$(IncludePath)</IncludePath>
-    <LibraryPath>F:\VisualStudioProjects\PragmaEngine\BUILD\PragmaEngine\Debug;F:\VisualStudioProjects\PragmaEngine\Dependencies\libs;$(LibraryPath)</LibraryPath>
+    <LibraryPath>F:\VisualStudioProjects\PragmaEngine\BUILD\PragmaEngine\Debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -85,7 +85,7 @@
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>glew32.lib;opengl32.lib;SDL2main.lib;SDL2.lib;SDL2_ttf.lib;SDL2_mixer.lib;irrKlang.lib;pragmaengine.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>pragmaengine.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -106,7 +106,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>glew32.lib;opengl32.lib;SDL2main.lib;SDL2.lib;SDL2_ttf.lib;SDL2_mixer.lib;irrKlang.lib;pragmaengine.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>pragmaengine.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
