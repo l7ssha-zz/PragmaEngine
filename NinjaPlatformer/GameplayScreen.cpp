@@ -7,9 +7,6 @@
 
 #include "Light.h"
 
-#include <CEGUI\CEGUI.h>
-#include <CEGUI\RendererModules\OpenGL/GL3Renderer.h>
-
 GameplayScreen::GameplayScreen(PragmaEngine::Window* window) : m_window(window) {
 }
 
@@ -91,9 +88,6 @@ void GameplayScreen::onEntry() {
 
     // Init player
     m_player.init(m_world.get(), glm::vec2(0.0f, 30.0f), glm::vec2(2.0f), glm::vec2(1.0f, 1.8f), PragmaEngine::ColorRGBA8(255, 255, 255, 255));
-
-	//TEMP
-	CEGUI::OpenGL3Renderer& myRenderer = CEGUI::OpenGL3Renderer::bootstrapSystem();
 }
 
 void GameplayScreen::onExit() {
