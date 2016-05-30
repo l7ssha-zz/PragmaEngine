@@ -70,13 +70,15 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)BUILD\$(ProjectName)\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)BUILD\$(ProjectName)\$(Configuration)\IMMEDIATE\</IntDir>
+    <IntDir>$(SolutionDir)BUILD\$(ProjectName)\$(Configuration)\IMMEDIATE</IntDir>
     <IncludePath>F:\VisualStudioProjects\PragmaEngine;F:\VisualStudioProjects\PragmaEngine\Dependencies\include;$(IncludePath)</IncludePath>
     <LibraryPath>F:\VisualStudioProjects\PragmaEngine\BUILD\PragmaEngine\Release;F:\VisualStudioProjects\PragmaEngine\Dependencies\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LibraryPath>F:\VisualStudioProjects\PragmaEngine\BUILD\PragmaEngine\Debug;F:\VisualStudioProjects\PragmaEngine\Dependencies\libs;$(LibraryPath)</LibraryPath>
     <IncludePath>F:\VisualStudioProjects\PragmaEngine;F:\VisualStudioProjects\PragmaEngine\Dependencies\include;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)BUILD\$(ProjectName)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)BUILD\$(ProjectName)\$(Configuration)\IMMEDIATE</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -86,7 +88,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>glew32.lib;opengl32.lib;SDL2main.lib;SDL2.lib;SDL2_ttf.lib;SDL2_mixer.lib;irrKlang.lib;BOX2D.lib;pragmaengine.lib</AdditionalDependencies>
+      <AdditionalDependencies>pragmaengine.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
