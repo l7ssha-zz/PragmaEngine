@@ -40,16 +40,14 @@ namespace PragmaEngine {
 		musicEngine->play2D(filepath.c_str(), looped, startPaused);	//play looped music ^^
 	}
 
+	/*
 	void AudioEngine::playMusicfromplaylist(std::vector<std::string>& playlist, float volume)
 	{
 		musicEngine->setSoundVolume(volume);
 		irrklang::ISound* snd = musicEngine->play2D(playlist[musicindex].c_str());
 
-		if ((bool)snd->isFinished == true) {
-			irrklang::ISound* snd = musicEngine->play2D(playlist[musicindex + 1].c_str());
-		}
 	}
-
+	*/
 	void AudioEngine::playSound(const std::string filepath, float volume)
 	{
 		soundEngine->setSoundVolume(volume);

@@ -8,6 +8,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BallGame", "BallGame\BallGa
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NinjaPlatformer", "NinjaPlatformer\NinjaPlatformer.vcxproj", "{6B337E1B-92CC-4BCA-BCE6-37136EE562CE}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sounderr", "Sounderr\Sounderr.vcxproj", "{01DB7BFF-6CB3-4FA1-A6D1-94F4E80E17BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -40,6 +42,14 @@ Global
 		{6B337E1B-92CC-4BCA-BCE6-37136EE562CE}.Release|x64.Build.0 = Release|x64
 		{6B337E1B-92CC-4BCA-BCE6-37136EE562CE}.Release|x86.ActiveCfg = Release|Win32
 		{6B337E1B-92CC-4BCA-BCE6-37136EE562CE}.Release|x86.Build.0 = Release|Win32
+		{01DB7BFF-6CB3-4FA1-A6D1-94F4E80E17BB}.Debug|x64.ActiveCfg = Debug|x64
+		{01DB7BFF-6CB3-4FA1-A6D1-94F4E80E17BB}.Debug|x64.Build.0 = Debug|x64
+		{01DB7BFF-6CB3-4FA1-A6D1-94F4E80E17BB}.Debug|x86.ActiveCfg = Debug|Win32
+		{01DB7BFF-6CB3-4FA1-A6D1-94F4E80E17BB}.Debug|x86.Build.0 = Debug|Win32
+		{01DB7BFF-6CB3-4FA1-A6D1-94F4E80E17BB}.Release|x64.ActiveCfg = Release|x64
+		{01DB7BFF-6CB3-4FA1-A6D1-94F4E80E17BB}.Release|x64.Build.0 = Release|x64
+		{01DB7BFF-6CB3-4FA1-A6D1-94F4E80E17BB}.Release|x86.ActiveCfg = Release|Win32
+		{01DB7BFF-6CB3-4FA1-A6D1-94F4E80E17BB}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -28,7 +28,7 @@ namespace PragmaEngine {
 
 		void playMusic(const std::string filepath, float volume);
 		void playMusic(const std::string filepath, bool looped, bool startPaused, float volume);
-		void playMusicfromplaylist(std::vector<std::string>& playlist, float volume);
+		//void playMusicfromplaylist(std::vector<std::string>& playlist, float volume);
 
 		void playSound(const std::string filepath, float volume);
 		void playSound(const std::string filepath, bool looped, bool startPaused, float volume);
