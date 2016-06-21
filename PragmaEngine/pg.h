@@ -11,6 +11,9 @@ including commercial application
 
 ------------------------- PragmaEngine BY L7SSHA | ALL RIGTS RESERVED -------------------------
 */
+
+// Header files of frequent usage
+
 namespace PragmaEngine {
     extern int init();
 }

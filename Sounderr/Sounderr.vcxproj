@@ -18,6 +18,9 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{01DB7BFF-6CB3-4FA1-A6D1-94F4E80E17BB}</ProjectGuid>
     <RootNamespace>Sounderr</RootNamespace>
@@ -69,16 +72,16 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)BUILD\$(ProjectName)\$(Configuration)</OutDir>
-    <IntDir>$(SolutionDir)BUILD\$(ProjectName)\$(Configuration)\IMMEDIATE</IntDir>
-    <IncludePath>F:\VisualStudioProjects\PragmaEngine\PragmaEngine;F:\VisualStudioProjects\PragmaEngine\Dependencies\include;$(IncludePath)</IncludePath>
-    <LibraryPath>F:\VisualStudioProjects\PragmaEngine\BUILD\PragmaEngine\Release;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)BUILD\$(ProjectName)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)BUILD\$(ProjectName)\$(Configuration)\IMMEDIATE\</IntDir>
+    <IncludePath>F:\VisualStudioProjects\PragmaEngine;F:\VisualStudioProjects\PragmaEngine\Dependencies\include;$(IncludePath)</IncludePath>
+    <LibraryPath>F:\VisualStudioProjects\PragmaEngine\Dependencies\libs;F:\VisualStudioProjects\PragmaEngine\BUILD\PragmaEngine\Release;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)BUILD\$(ProjectName)\$(Configuration)</OutDir>
-    <IntDir>$(SolutionDir)BUILD\$(ProjectName)\$(Configuration)\IMMEDIATE</IntDir>
-    <IncludePath>F:\VisualStudioProjects\PragmaEngine\PragmaEngine;F:\VisualStudioProjects\PragmaEngine\Dependencies\include;$(IncludePath)</IncludePath>
-    <LibraryPath>F:\VisualStudioProjects\PragmaEngine\BUILD\PragmaEngine\Release;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)BUILD\$(ProjectName)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)BUILD\$(ProjectName)\$(Configuration)\IMMEDIATE\</IntDir>
+    <IncludePath>F:\VisualStudioProjects\PragmaEngine;F:\VisualStudioProjects\PragmaEngine\Dependencies\include;$(IncludePath)</IncludePath>
+    <LibraryPath>F:\VisualStudioProjects\PragmaEngine\Dependencies\libs;F:\VisualStudioProjects\PragmaEngine\BUILD\PragmaEngine\Release;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -111,6 +114,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>pragmaengine.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -126,9 +130,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
